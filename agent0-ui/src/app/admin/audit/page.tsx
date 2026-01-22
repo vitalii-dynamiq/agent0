@@ -28,8 +28,9 @@ import {
   TokensIcon
 } from '@radix-ui/react-icons';
 
+type IconProps = { className?: string };
 const actionConfig: Record<AuditAction, { 
-  icon: React.ElementType; 
+  icon: React.ComponentType<IconProps>; 
   label: string; 
 }> = {
   decision_created: { icon: FileTextIcon, label: 'Decision Created' },
@@ -436,15 +437,16 @@ export default function AuditPage() {
                     {/* Entries */}
                     <div className="space-y-4">
                       {selectedAudit.map((entry) => {
-                        const config = actionConfig[entry.action];
-                        const Icon = config.icon;
+                        const config = actionConfig[entry.action as AuditAction];
+                        if (!config) return null;
+                        const IconComponent = config.icon;
                         const isExpanded = expandedEntries.has(entry.id);
                         
                         return (
                           <div key={entry.id} className="relative pl-12">
                             {/* Timeline dot */}
                             <div className="absolute left-3 w-5 h-5 rounded-full bg-secondary border border-border flex items-center justify-center">
-                              <Icon className="w-3 h-3 text-muted-foreground" />
+                              <IconComponent className="w-3 h-3 text-muted-foreground" />
                             </div>
 
                             {/* Entry Card */}

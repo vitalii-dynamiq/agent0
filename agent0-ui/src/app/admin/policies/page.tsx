@@ -28,7 +28,7 @@ import {
 } from '@radix-ui/react-icons';
 
 const categoryConfig: Record<PolicyCategory, { 
-  icon: React.ElementType; 
+  icon: React.ComponentType<{ className?: string }>; 
   label: string;
 }> = {
   governance: { icon: GlobeIcon, label: 'Governance' },

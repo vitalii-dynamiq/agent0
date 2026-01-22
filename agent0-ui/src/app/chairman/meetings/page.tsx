@@ -17,7 +17,7 @@ import {
   PlayIcon
 } from '@radix-ui/react-icons';
 
-const meetingTypeConfig: Record<string, { label: string; color: string; icon: React.ElementType }> = {
+const meetingTypeConfig: Record<string, { label: string; color: string; icon: React.ComponentType<{ className?: string }> }> = {
   internal: { label: 'Internal', color: 'bg-secondary text-foreground border-border', icon: HomeIcon },
   external: { label: 'External', color: 'bg-secondary text-foreground border-border', icon: PersonIcon },
   board: { label: 'Board', color: 'bg-secondary text-foreground border-border', icon: PersonIcon },

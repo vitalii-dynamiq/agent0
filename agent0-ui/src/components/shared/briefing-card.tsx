@@ -19,7 +19,7 @@ interface BriefingCardProps {
 }
 
 const typeConfig: Record<BriefingCardType['type'], {
-  icon: React.ElementType;
+  icon: React.ComponentType<{ className?: string }>;
   color: string;
   bgColor: string;
   borderColor: string;

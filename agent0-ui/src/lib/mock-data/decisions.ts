@@ -208,16 +208,16 @@ const buildDefaultReasoning = (decision: Decision) => {
   ].join(' ');
 };
 
-const buildDefaultRiskAssessment = (decision: Decision) => {
+const buildDefaultRiskAssessment = (decision: Decision): Decision['riskAssessment'] => {
   const overall = decision.level === 3 ? 'high' : decision.level === 2 ? 'medium' : 'low';
   const financial = decision.value && decision.value > 15000000 ? 'high' : decision.value ? 'medium' : 'low';
   const operational = decision.category === 'infrastructure' ? 'high' : 'medium';
   const reputational = decision.category === 'policy' || decision.level === 3 ? 'high' : 'medium';
   return {
-    overall,
-    financial,
-    operational,
-    reputational,
+    overall: overall as 'low' | 'medium' | 'high' | 'critical',
+    financial: financial as 'low' | 'medium' | 'high' | 'critical',
+    operational: operational as 'low' | 'medium' | 'high' | 'critical',
+    reputational: reputational as 'low' | 'medium' | 'high' | 'critical',
     factors: [
       'Cross-entity dependencies require alignment',
       'Funding readiness and timeline sensitivity reviewed',

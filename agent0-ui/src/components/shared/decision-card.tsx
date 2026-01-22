@@ -28,7 +28,7 @@ const levelLabels: Record<number, { label: string; className: string }> = {
   3: { label: 'Advisory', className: 'level-3' },
 };
 
-const statusConfig: Record<string, { label: string; className: string; icon: React.ElementType }> = {
+const statusConfig: Record<string, { label: string; className: string; icon: React.ComponentType<{ className?: string }> }> = {
   incoming: { label: 'Incoming', className: 'bg-secondary text-foreground border-border', icon: ClockIcon },
   classifying: { label: 'Classifying', className: 'bg-secondary text-foreground border-border', icon: ArrowUpIcon },
   in_analysis: { label: 'In Analysis', className: 'bg-secondary text-foreground border-border', icon: ArrowUpIcon },

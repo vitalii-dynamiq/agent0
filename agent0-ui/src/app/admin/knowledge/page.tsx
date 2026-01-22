@@ -19,8 +19,9 @@ import {
   TokensIcon,
 } from '@radix-ui/react-icons';
 
+type IconProps = { className?: string };
 const nodeTypeConfig: Record<KnowledgeNodeType, { 
-  icon: React.ElementType; 
+  icon: React.ComponentType<IconProps>; 
   label: string 
 }> = {
   person: { icon: PersonIcon, label: 'People' },
@@ -182,6 +183,7 @@ export default function ContextGraphPage() {
                 <span className="text-[13px] text-muted-foreground">Filter:</span>
                 {(Object.keys(nodeTypeConfig) as KnowledgeNodeType[]).map(type => {
                   const config = nodeTypeConfig[type];
+                  const Icon = config.icon;
                   const isSelected = selectedTypes.includes(type);
                   return (
                   <Button
@@ -197,7 +199,7 @@ export default function ContextGraphPage() {
                           : "border-border text-muted-foreground hover:text-foreground hover:bg-secondary"
                       )}
                     >
-                      <config.icon className="w-3.5 h-3.5" />
+                      <Icon className="w-3.5 h-3.5" />
                       <span>{config.label}</span>
                       <span className="text-[11px] tabular-nums opacity-60">({entityCounts[type]})</span>
                   </Button>

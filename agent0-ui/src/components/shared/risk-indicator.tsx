@@ -18,7 +18,7 @@ const riskConfig: Record<RiskLevel, {
   color: string; 
   bgColor: string;
   borderColor: string;
-  icon: React.ElementType;
+  icon: React.ComponentType<{ className?: string }>;
 }> = {
   low: { 
     label: 'Low Risk', 
