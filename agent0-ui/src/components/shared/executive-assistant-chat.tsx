@@ -390,15 +390,13 @@ export function ExecutiveAssistantChat({ basePath = '/chairman', className, hide
           <Link
             key={decision.id}
             href={`${basePath}/decision/${decision.id}`}
-            className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-3 rounded-lg border border-border/60 px-3 py-2.5 hover:bg-secondary/50 transition-colors"
+            className="block rounded-lg border border-border/60 px-3 py-3 hover:bg-secondary/50 transition-colors"
           >
-            <div className="min-w-0 flex-1">
-              <p className="text-[11px] text-muted-foreground">L{decision.level} · {decision.category}</p>
-              <p className="text-[13px] font-medium text-foreground line-clamp-2 sm:truncate">{decision.title}</p>
-            </div>
-            <div className="flex items-center justify-between sm:flex-col sm:items-end sm:text-right flex-shrink-0 mt-1 sm:mt-0">
-              <p className="text-[12px] font-medium tabular-nums">{formatValue(decision.value)}</p>
-              <p className="text-[11px] text-muted-foreground">Due {formatShortDate(decision.dueDate)}</p>
+            <p className="text-[11px] text-muted-foreground mb-1">L{decision.level} · {decision.category}</p>
+            <p className="text-[13px] font-medium text-foreground mb-2 break-words">{decision.title}</p>
+            <div className="flex items-center justify-between text-[11px]">
+              <p className="font-medium tabular-nums">{formatValue(decision.value)}</p>
+              <p className="text-muted-foreground">Due {formatShortDate(decision.dueDate)}</p>
             </div>
           </Link>
         ))}
@@ -426,15 +424,11 @@ export function ExecutiveAssistantChat({ basePath = '/chairman', className, hide
           <Link
             key={meeting.id}
             href={`${basePath}/meeting/${meeting.id}`}
-            className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-3 rounded-lg border border-border/60 px-3 py-2.5 hover:bg-secondary/50 transition-colors"
+            className="block rounded-lg border border-border/60 px-3 py-3 hover:bg-secondary/50 transition-colors"
           >
-            <div className="min-w-0 flex-1">
-              <p className="text-[11px] text-muted-foreground">{meeting.time} · {meeting.duration}m</p>
-              <p className="text-[13px] font-medium text-foreground line-clamp-2 sm:truncate">{meeting.title}</p>
-            </div>
-            <div className="text-[11px] text-muted-foreground sm:text-right flex-shrink-0 mt-1 sm:mt-0">
-              {meeting.location || '—'}
-            </div>
+            <p className="text-[11px] text-muted-foreground mb-1">{meeting.time} · {meeting.duration}m</p>
+            <p className="text-[13px] font-medium text-foreground mb-1 break-words">{meeting.title}</p>
+            <p className="text-[11px] text-muted-foreground">{meeting.location || '—'}</p>
           </Link>
         ))}
         {todaysMeetings.length === 0 && (
@@ -459,10 +453,10 @@ export function ExecutiveAssistantChat({ basePath = '/chairman', className, hide
             key={signal.id}
             type="button"
             onClick={() => handleSignalClick(signal)}
-            className="w-full flex items-center justify-between gap-2 rounded-lg border border-border/60 px-3 py-2.5 text-[12px] text-muted-foreground hover:bg-secondary/50 transition-colors text-left"
+            className="w-full flex items-start justify-between gap-3 rounded-lg border border-border/60 px-3 py-3 text-[12px] text-muted-foreground hover:bg-secondary/50 transition-colors text-left"
           >
-            <span className="line-clamp-2 sm:truncate flex-1 min-w-0">{signal.title}</span>
-            <ChevronRightIcon className="w-3.5 h-3.5 flex-shrink-0 text-muted-foreground" />
+            <span className="flex-1 min-w-0 break-words">{signal.title}</span>
+            <ChevronRightIcon className="w-4 h-4 flex-shrink-0 text-muted-foreground mt-0.5" />
           </button>
         ))}
       </div>
@@ -484,10 +478,10 @@ export function ExecutiveAssistantChat({ basePath = '/chairman', className, hide
             key={item.id}
             type="button"
             onClick={() => handleNewsClick(item)}
-            className="w-full flex items-center justify-between gap-2 rounded-lg border border-border/60 px-3 py-2.5 text-[12px] text-muted-foreground hover:bg-secondary/50 transition-colors text-left"
+            className="w-full flex items-start justify-between gap-3 rounded-lg border border-border/60 px-3 py-3 text-[12px] text-muted-foreground hover:bg-secondary/50 transition-colors text-left"
           >
-            <span className="line-clamp-2 sm:truncate flex-1 min-w-0">{item.title}</span>
-            <ChevronRightIcon className="w-3.5 h-3.5 flex-shrink-0 text-muted-foreground" />
+            <span className="flex-1 min-w-0 break-words">{item.title}</span>
+            <ChevronRightIcon className="w-4 h-4 flex-shrink-0 text-muted-foreground mt-0.5" />
           </button>
         ))}
       </div>

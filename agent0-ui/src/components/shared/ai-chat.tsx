@@ -223,7 +223,7 @@ export function AIChat({
             </div>
           </div>
         )}
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="flex items-center gap-2">
           {enableAttachments && (
             <>
               <Button
@@ -232,9 +232,9 @@ export function AIChat({
                 size="icon"
                 shape="squared"
                 onClick={handleAttach}
-                className="h-11 w-11 sm:h-9 sm:w-9 flex-shrink-0"
+                className="h-12 w-12 sm:h-10 sm:w-10 flex-shrink-0"
               >
-                <UploadIcon className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
+                <UploadIcon className="w-5 h-5 sm:w-4 sm:h-4" />
               </Button>
               <input
                 ref={fileInputRef}
@@ -252,16 +252,16 @@ export function AIChat({
               shape="squared"
               onClick={onToggleRecording}
               className={cn(
-                "h-11 w-11 sm:h-9 sm:w-9 border border-border flex-shrink-0",
+                "h-12 w-12 sm:h-10 sm:w-10 border border-border flex-shrink-0",
                 isRecording
                   ? "bg-primary text-primary-foreground hover:bg-primary/90"
                   : "bg-secondary text-foreground hover:bg-accent"
               )}
             >
               {isRecording ? (
-                <StopIcon className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
+                <StopIcon className="w-5 h-5 sm:w-4 sm:h-4" />
               ) : (
-                <SpeakerLoudIcon className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
+                <SpeakerLoudIcon className="w-5 h-5 sm:w-4 sm:h-4" />
               )}
             </Button>
           )}
@@ -271,14 +271,14 @@ export function AIChat({
               onChange={(e) => setInput(e.target.value)}
               placeholder={placeholder}
               disabled={isLoading}
-              className="pr-12 h-11 sm:h-12 rounded-[4px] text-[14px] sm:text-[13px]"
+              className="pr-14 h-12 sm:h-12 rounded-lg text-[16px] sm:text-[14px]"
             />
             <Button
               type="submit"
               size="icon"
               shape="squared"
               disabled={(!input.trim() && attachments.length === 0) || isLoading}
-              className="absolute right-1.5 top-1/2 -translate-y-1/2 h-8 w-8 sm:h-9 sm:w-9"
+              className="absolute right-2 top-1/2 -translate-y-1/2 h-9 w-9"
             >
               <PaperPlaneIcon className="w-4 h-4" />
             </Button>

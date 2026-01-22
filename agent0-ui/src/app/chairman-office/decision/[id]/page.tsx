@@ -110,22 +110,21 @@ export default function ChairmanDecisionDetail({ params }: PageProps) {
           {/* Header Card */}
           <Card>
             <CardContent className="p-4 sm:p-6">
-              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
-                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                  <span className="text-[10px] sm:text-[11px] text-muted-foreground px-1.5 sm:px-2 py-0.5 sm:py-1 border border-border rounded whitespace-nowrap">
-                    Level {decision.level}
+              {/* Labels - uniform styling for mobile alignment */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="inline-flex items-center text-[11px] text-muted-foreground h-7 px-2.5 border border-border rounded bg-secondary/30">
+                  Level {decision.level}
+                </span>
+                <span className="inline-flex items-center text-[11px] text-muted-foreground h-7 px-2.5 border border-border rounded capitalize bg-secondary/30">
+                  {decision.category}
+                </span>
+                <CeoPillarBadge pillar={decision.ceoPillar} className="h-7 px-2.5 bg-secondary/30" />
+                {decision.escalatedFrom && (
+                  <span className="inline-flex items-center text-[11px] text-muted-foreground h-7 px-2.5 border border-border rounded bg-secondary/30">
+                    Escalated from L{decision.escalatedFrom}
                   </span>
-                  <span className="text-[10px] sm:text-[11px] text-muted-foreground px-1.5 sm:px-2 py-0.5 sm:py-1 border border-border rounded capitalize whitespace-nowrap">
-                    {decision.category}
-                  </span>
-                  <CeoPillarBadge pillar={decision.ceoPillar} />
-                  {decision.escalatedFrom && (
-                    <span className="text-[10px] sm:text-[11px] text-muted-foreground px-1.5 sm:px-2 py-0.5 sm:py-1 border border-border rounded whitespace-nowrap">
-                      Escalated from L{decision.escalatedFrom}
-                    </span>
-                  )}
-                </div>
-                <span className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-muted-foreground px-1.5 sm:px-2 py-0.5 sm:py-1 border border-border rounded self-start whitespace-nowrap">
+                )}
+                <span className="inline-flex items-center gap-1.5 text-[11px] text-muted-foreground h-7 px-2.5 border border-border rounded bg-secondary/30">
                   <ClockIcon className="w-3 h-3" />
                   Due {new Date(decision.dueDate).toLocaleDateString('en-AE', { day: 'numeric', month: 'short' })}
                 </span>
@@ -250,40 +249,36 @@ export default function ChairmanDecisionDetail({ params }: PageProps) {
                 <CardTitle className="text-[15px] font-medium">Historical Precedents</CardTitle>
               </CardHeader>
               <CardContent className="pt-0 px-4 sm:px-6">
-                <div className="space-y-2">
+                <div className="space-y-3">
                   {decision.precedents.map((precedent) => (
-                    <Button
+                    <button
                       key={precedent.id}
                       type="button"
                       onClick={() => precedent.precedentDecisionId && router.push(`/chairman-office/decision/${precedent.precedentDecisionId}`)}
-                      variant="outline"
-                      size="sm"
                       className={cn(
-                        "w-full h-auto flex-col sm:flex-row sm:justify-between p-3 text-left border border-border transition-colors gap-2 sm:gap-4",
+                        "w-full text-left p-3 rounded-lg border border-border transition-colors",
                         precedent.precedentDecisionId
                           ? "hover:bg-secondary/50 cursor-pointer"
                           : "cursor-default"
                       )}
                     >
-                      <div className="min-w-0 flex-1">
-                        <p className="text-[13px] font-medium text-foreground line-clamp-2 sm:line-clamp-1">{precedent.title}</p>
-                        <p className="text-[11px] text-muted-foreground">
-                          {new Date(precedent.date).toLocaleDateString('en-AE', { 
-                            month: 'short', 
-                            year: 'numeric' 
-                          })}
-                        </p>
-                      </div>
-                      <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4 flex-shrink-0">
-                        <div className="sm:text-right">
-                          <p className="text-[11px] text-muted-foreground">Similarity</p>
-                          <p className="text-[13px] font-medium text-foreground tabular-nums">{precedent.similarity}%</p>
+                      <p className="text-[13px] font-medium text-foreground mb-1 break-words">{precedent.title}</p>
+                      <p className="text-[11px] text-muted-foreground mb-2">
+                        {new Date(precedent.date).toLocaleDateString('en-AE', { 
+                          month: 'short', 
+                          year: 'numeric' 
+                        })}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <span className="text-[11px] text-muted-foreground">Similarity: </span>
+                          <span className="text-[12px] font-medium text-foreground tabular-nums">{precedent.similarity}%</span>
                         </div>
-                        <span className="text-[11px] px-2 py-0.5 bg-secondary rounded capitalize whitespace-nowrap">
+                        <span className="text-[11px] px-2 py-0.5 bg-secondary rounded capitalize">
                           {precedent.outcome}
                         </span>
                       </div>
-                    </Button>
+                    </button>
                   ))}
                 </div>
               </CardContent>

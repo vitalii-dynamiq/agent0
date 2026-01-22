@@ -14,7 +14,7 @@ export function CeoPillarBadge({ pillar, className }: { pillar: CeoPillar; class
   return (
     <span
       className={cn(
-        "text-[10px] sm:text-[11px] px-1.5 sm:px-2 py-0.5 sm:py-1 border border-border rounded text-muted-foreground bg-secondary/40 whitespace-nowrap",
+        "inline-flex items-center text-[11px] px-2 py-1 border border-border rounded text-muted-foreground bg-secondary/40 whitespace-nowrap",
         className
       )}
     >
