@@ -52,6 +52,7 @@ export default function PoliciesPage() {
   const [newEffectiveDate, setNewEffectiveDate] = useState('');
   const [newPolicyCategory, setNewPolicyCategory] = useState<PolicyCategory>('governance');
   const [newPolicyStatus, setNewPolicyStatus] = useState<PolicyStatus>('under_review');
+  const [showPolicyList, setShowPolicyList] = useState(true);
 
   const stats = useMemo(() => ({
     total: policies.length,
@@ -95,18 +96,18 @@ export default function PoliciesPage() {
   return (
     <div className="h-[calc(100vh-4rem)] flex flex-col bg-background">
       {/* Header */}
-      <div className="px-6 py-6 border-b border-border">
-        <div className="flex items-start justify-between">
+      <div className="px-4 sm:px-6 py-4 sm:py-6 border-b border-border">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
           <div>
-            <h1 className="text-xl font-semibold tracking-tight">Policies</h1>
-            <p className="text-sm text-muted-foreground mt-1">
-              Policies are ingested from enterprise sources (SharePoint, data rooms) and visualized here for enforcement rules.
+            <h1 className="text-lg sm:text-xl font-semibold tracking-tight">Policies</h1>
+            <p className="text-[13px] sm:text-sm text-muted-foreground mt-1">
+              Policies are ingested from enterprise sources and visualized here for enforcement rules.
             </p>
           </div>
           <div className="flex items-center gap-2">
             <Dialog open={isAddOpen} onOpenChange={setIsAddOpen}>
               <DialogTrigger asChild>
-                <Button size="sm" variant="outline">
+                <Button size="sm" variant="outline" className="w-full sm:w-auto">
                   <PlusIcon className="w-4 h-4 mr-2" />
                   Add Policy
                 </Button>
@@ -207,22 +208,22 @@ export default function PoliciesPage() {
         </div>
 
         {/* Stats */}
-        <div className="flex items-center gap-10 mt-6">
+        <div className="grid grid-cols-2 sm:flex sm:items-center gap-4 sm:gap-10 mt-4 sm:mt-6">
           <div>
-            <p className="text-2xl font-semibold tabular-nums">{stats.total}</p>
-            <p className="text-sm text-muted-foreground">Total policies</p>
+            <p className="text-xl sm:text-2xl font-semibold tabular-nums">{stats.total}</p>
+            <p className="text-[11px] sm:text-sm text-muted-foreground">Total policies</p>
           </div>
           <div>
-            <p className="text-2xl font-semibold tabular-nums">{stats.active}</p>
-            <p className="text-sm text-muted-foreground">Active</p>
+            <p className="text-xl sm:text-2xl font-semibold tabular-nums">{stats.active}</p>
+            <p className="text-[11px] sm:text-sm text-muted-foreground">Active</p>
           </div>
           <div>
-            <p className="text-2xl font-semibold tabular-nums">{stats.underReview}</p>
-            <p className="text-sm text-muted-foreground">Under review</p>
+            <p className="text-xl sm:text-2xl font-semibold tabular-nums">{stats.underReview}</p>
+            <p className="text-[11px] sm:text-sm text-muted-foreground">Under review</p>
           </div>
           <div>
-            <p className="text-2xl font-semibold tabular-nums">{stats.totalRules}</p>
-            <p className="text-sm text-muted-foreground">Total rules</p>
+            <p className="text-xl sm:text-2xl font-semibold tabular-nums">{stats.totalRules}</p>
+            <p className="text-[11px] sm:text-sm text-muted-foreground">Total rules</p>
           </div>
         </div>
       </div>
@@ -234,10 +235,13 @@ export default function PoliciesPage() {
       )}
 
       {/* Main Content */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Policy List */}
-        <div className="w-80 border-r border-border flex flex-col">
-          <div className="p-4 border-b border-border space-y-3">
+      <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
+        {/* Policy List - Hidden on mobile when policy is selected */}
+        <div className={cn(
+          "md:w-80 border-b md:border-b-0 md:border-r border-border flex flex-col",
+          selectedPolicy && !showPolicyList ? "hidden md:flex" : "flex"
+        )}>
+          <div className="p-3 sm:p-4 border-b border-border space-y-3">
             <div className="relative">
               <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
@@ -249,7 +253,7 @@ export default function PoliciesPage() {
             </div>
           </div>
           
-          <ScrollArea className="flex-1">
+          <ScrollArea className="flex-1 max-h-[40vh] md:max-h-none">
             <div className="p-2 space-y-1">
               {filteredPolicies.map(policy => {
                 const catConfig = categoryConfig[policy.category];
@@ -260,7 +264,10 @@ export default function PoliciesPage() {
                     key={policy.id}
                     type="button"
                     variant="ghost"
-                    onClick={() => setSelectedPolicy(policy)}
+                    onClick={() => {
+                      setSelectedPolicy(policy);
+                      setShowPolicyList(false);
+                    }}
                     className={cn(
                       "w-full h-auto text-left p-3 rounded-lg transition-all justify-start items-start",
                       selectedPolicy?.id === policy.id
@@ -302,13 +309,26 @@ export default function PoliciesPage() {
 
         {/* Policy Details */}
         {selectedPolicy ? (
-          <div className="flex-1 flex flex-col overflow-hidden">
+          <div className={cn(
+            "flex-1 flex flex-col overflow-hidden",
+            showPolicyList ? "hidden md:flex" : "flex"
+          )}>
             {/* Policy Header */}
-            <div className="px-6 py-5 border-b border-border">
-              <div className="flex items-start justify-between">
+            <div className="px-4 sm:px-6 py-4 sm:py-5 border-b border-border">
+              {/* Back button on mobile */}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowPolicyList(true)}
+                className="md:hidden mb-3 -ml-2 text-muted-foreground"
+              >
+                <Cross2Icon className="w-4 h-4 mr-1 rotate-45" />
+                Back to policies
+              </Button>
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
                 <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <h2 className="text-lg font-semibold">{selectedPolicy.name}</h2>
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
+                    <h2 className="text-base sm:text-lg font-semibold">{selectedPolicy.name}</h2>
                     {selectedPolicy.status === 'active' && (
                       <span className="flex items-center gap-1.5 text-sm">
                         <span className="w-2 h-2 rounded-full bg-success" />
@@ -321,13 +341,13 @@ export default function PoliciesPage() {
                       </span>
                     )}
                   </div>
-                  <p className="text-sm text-muted-foreground max-w-2xl">{selectedPolicy.description}</p>
-                  <div className="flex items-center gap-4 mt-3 text-sm text-muted-foreground">
+                  <p className="text-[13px] sm:text-sm text-muted-foreground max-w-2xl">{selectedPolicy.description}</p>
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-3 text-[12px] sm:text-sm text-muted-foreground">
                     <span>Version {selectedPolicy.version}</span>
-                    <span>·</span>
+                    <span className="hidden sm:inline">·</span>
                     <span>Effective {new Date(selectedPolicy.effectiveDate).toLocaleDateString('en-AE')}</span>
-                    <span>·</span>
-                    <span>Created by {selectedPolicy.createdBy}</span>
+                    <span className="hidden sm:inline">·</span>
+                    <span>By {selectedPolicy.createdBy}</span>
                   </div>
                 </div>
               </div>
@@ -336,7 +356,7 @@ export default function PoliciesPage() {
             {/* Content */}
             <div className="flex-1 flex overflow-hidden">
               <ScrollArea className="flex-1">
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   <div className="space-y-3">
                     {selectedPolicy.rules.map((rule, index) => {
                       const isExpanded = expandedRules.has(rule.id);

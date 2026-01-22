@@ -52,6 +52,7 @@ export default function AuditPage() {
   const [selectedDecisionId, setSelectedDecisionId] = useState<string | null>(initialDecisionId);
   const [actorFilter, setActorFilter] = useState<'all' | 'ai' | 'human'>('all');
   const [expandedEntries, setExpandedEntries] = useState<Set<string>>(new Set());
+  const [showDecisionList, setShowDecisionList] = useState(true);
 
   const decisionsWithAudit = useMemo(() => {
     const decisionIds = [...new Set(auditEntries.map(a => a.decisionId))];
@@ -171,9 +172,9 @@ export default function AuditPage() {
   return (
     <div className="h-[calc(100vh-4rem)] flex flex-col">
       {/* Header */}
-      <div className="px-6 py-5 border-b border-border">
-        <div className="flex items-start justify-between">
-          <p className="text-[14px] text-muted-foreground">
+      <div className="px-4 sm:px-6 py-4 sm:py-5 border-b border-border">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+          <p className="text-[13px] sm:text-[14px] text-muted-foreground">
             Complete transparency into AI reasoning and decision-making
           </p>
           <div className="flex items-center gap-2">
@@ -185,38 +186,41 @@ export default function AuditPage() {
         </div>
 
         {/* Stats */}
-        <div className="flex items-center gap-10 mt-6">
+        <div className="grid grid-cols-2 sm:flex sm:items-center gap-4 sm:gap-10 mt-4 sm:mt-6">
           <div>
-            <p className="text-2xl font-semibold tabular-nums">{stats.total}</p>
-            <p className="text-[12px] text-muted-foreground">Total Actions</p>
+            <p className="text-xl sm:text-2xl font-semibold tabular-nums">{stats.total}</p>
+            <p className="text-[11px] sm:text-[12px] text-muted-foreground">Total Actions</p>
           </div>
           <div>
-            <p className="text-2xl font-semibold tabular-nums">{stats.aiActions}</p>
-            <p className="text-[12px] text-muted-foreground">AI Actions</p>
+            <p className="text-xl sm:text-2xl font-semibold tabular-nums">{stats.aiActions}</p>
+            <p className="text-[11px] sm:text-[12px] text-muted-foreground">AI Actions</p>
           </div>
           <div>
-            <p className="text-2xl font-semibold tabular-nums">{stats.humanActions}</p>
-            <p className="text-[12px] text-muted-foreground">Human Actions</p>
+            <p className="text-xl sm:text-2xl font-semibold tabular-nums">{stats.humanActions}</p>
+            <p className="text-[11px] sm:text-[12px] text-muted-foreground">Human Actions</p>
           </div>
           <div>
-            <p className="text-2xl font-semibold tabular-nums">{stats.avgConfidence}%</p>
-            <p className="text-[12px] text-muted-foreground">Avg Confidence</p>
+            <p className="text-xl sm:text-2xl font-semibold tabular-nums">{stats.avgConfidence}%</p>
+            <p className="text-[11px] sm:text-[12px] text-muted-foreground">Avg Confidence</p>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
         {/* Decision List Sidebar */}
-        <div className="w-72 border-r border-border flex flex-col overflow-hidden min-h-0">
-          <div className="p-4 border-b border-border">
+        <div className={cn(
+          "md:w-72 border-b md:border-b-0 md:border-r border-border flex flex-col overflow-hidden min-h-0",
+          selectedDecision && !showDecisionList ? "hidden md:flex" : "flex"
+        )}>
+          <div className="p-3 sm:p-4 border-b border-border">
             <p className="text-[13px] font-medium text-muted-foreground mb-3">Audited Decisions</p>
             <div className="relative">
               <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input placeholder="Search decisions..." className="pl-9 h-9 text-[13px]" />
             </div>
           </div>
-          <ScrollArea className="flex-1">
+          <ScrollArea className="flex-1 max-h-[35vh] md:max-h-none">
             <div className="p-2 space-y-1">
               {decisionsWithAudit.length === 0 && (
                 <div className="p-4 text-[12px] text-muted-foreground">
@@ -230,7 +234,10 @@ export default function AuditPage() {
                     key={decision.id}
                     type="button"
                     variant="ghost"
-                    onClick={() => setSelectedDecisionId(decision.id)}
+                    onClick={() => {
+                      setSelectedDecisionId(decision.id);
+                      setShowDecisionList(false);
+                    }}
                     className={cn(
                       "w-full h-auto text-left p-3 rounded-lg transition-colors justify-start items-start",
                       activeDecisionId === decision.id ? "bg-secondary" : "hover:bg-secondary/50"
@@ -253,19 +260,32 @@ export default function AuditPage() {
         </div>
 
         {/* Audit Timeline */}
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className={cn(
+          "flex-1 flex flex-col overflow-hidden",
+          showDecisionList ? "hidden md:flex" : "flex"
+        )}>
           {selectedDecision ? (
             <>
               {/* Decision Header */}
-              <div className="p-4 border-b border-border">
-                <div className="flex items-start justify-between gap-4">
+              <div className="p-3 sm:p-4 border-b border-border">
+                {/* Back button on mobile */}
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setShowDecisionList(true)}
+                  className="md:hidden mb-3 -ml-2 text-muted-foreground"
+                >
+                  <Cross2Icon className="w-4 h-4 mr-1 rotate-45" />
+                  Back to decisions
+                </Button>
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-[11px] text-muted-foreground">Level {selectedDecision.level}</span>
                       <span className="text-[11px] text-muted-foreground">·</span>
                       <span className="text-[11px] text-muted-foreground capitalize">{selectedDecision.status.replace('_', ' ')}</span>
                     </div>
-                    <h2 className="text-[15px] font-medium">{selectedDecision.title}</h2>
+                    <h2 className="text-[14px] sm:text-[15px] font-medium">{selectedDecision.title}</h2>
                   </div>
                   {selectedDecision.value && (
                     <p className="text-[14px] font-medium tabular-nums flex-shrink-0">
@@ -275,8 +295,8 @@ export default function AuditPage() {
                 </div>
 
                 {/* Filters */}
-                <div className="flex items-center gap-3 mt-4">
-                  <div className="relative flex-1 max-w-xs">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mt-4">
+                  <div className="relative flex-1 sm:max-w-xs">
                     <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                     <Input
                       placeholder="Search audit entries..."
@@ -285,7 +305,7 @@ export default function AuditPage() {
                       className="pl-9 h-9 text-[13px]"
                     />
                   </div>
-                  <div className="flex items-center gap-1 p-1 bg-secondary rounded-lg">
+                  <div className="flex items-center gap-1 p-1 bg-secondary rounded-lg self-start">
                     {(['all', 'ai', 'human'] as const).map(filter => (
                       <Button
                         key={filter}
@@ -294,7 +314,7 @@ export default function AuditPage() {
                         size="sm"
                         onClick={() => setActorFilter(filter)}
                         className={cn(
-                          "px-3 py-1.5 text-[12px] font-medium rounded-md transition-colors",
+                          "px-2.5 sm:px-3 py-1.5 text-[11px] sm:text-[12px] font-medium rounded-md transition-colors",
                           actorFilter === filter
                             ? "bg-foreground text-background hover:bg-foreground"
                             : "text-muted-foreground hover:text-foreground"
@@ -309,8 +329,8 @@ export default function AuditPage() {
 
               {/* Timeline */}
               <div className="flex-1 min-h-0 overflow-y-auto">
-                <div className="p-6 space-y-6">
-                  <div className="grid grid-cols-1 xl:grid-cols-4 gap-4">
+                <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4">
                     <div className="rounded-lg border border-border bg-card p-4">
                       <div className="flex items-center justify-between mb-3">
                         <h3 className="text-[13px] font-medium">Context sources</h3>
@@ -393,8 +413,8 @@ export default function AuditPage() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                    <div className="space-y-4">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
+                    <div className="space-y-3 sm:space-y-4">
                       <DecisionRouteCard steps={selectedDecision.route} />
                       {selectedDecision.escalationReason && (
                         <div className="rounded-lg border border-border bg-secondary/40 p-3">

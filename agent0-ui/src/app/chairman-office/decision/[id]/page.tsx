@@ -91,9 +91,9 @@ export default function ChairmanDecisionDetail({ params }: PageProps) {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-8">
+    <div className="max-w-5xl mx-auto px-3 sm:px-6 py-4 sm:py-8">
       {/* Back Button */}
-      <div className="mb-6">
+      <div className="mb-4 sm:mb-6">
         <Button 
           variant="ghost" 
           onClick={() => router.back()}
@@ -104,42 +104,42 @@ export default function ChairmanDecisionDetail({ params }: PageProps) {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-6">
           {/* Header Card */}
           <Card>
-            <CardContent className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <span className="text-[11px] text-muted-foreground px-2 py-1 border border-border rounded">
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                  <span className="text-[10px] sm:text-[11px] text-muted-foreground px-1.5 sm:px-2 py-0.5 sm:py-1 border border-border rounded whitespace-nowrap">
                     Level {decision.level}
                   </span>
-                  <span className="text-[11px] text-muted-foreground px-2 py-1 border border-border rounded capitalize">
+                  <span className="text-[10px] sm:text-[11px] text-muted-foreground px-1.5 sm:px-2 py-0.5 sm:py-1 border border-border rounded capitalize whitespace-nowrap">
                     {decision.category}
                   </span>
                   <CeoPillarBadge pillar={decision.ceoPillar} />
                   {decision.escalatedFrom && (
-                    <span className="text-[11px] text-muted-foreground px-2 py-1 border border-border rounded">
+                    <span className="text-[10px] sm:text-[11px] text-muted-foreground px-1.5 sm:px-2 py-0.5 sm:py-1 border border-border rounded whitespace-nowrap">
                       Escalated from L{decision.escalatedFrom}
                     </span>
                   )}
                 </div>
-                <span className="flex items-center gap-1.5 text-[11px] text-muted-foreground px-2 py-1 border border-border rounded">
+                <span className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-muted-foreground px-1.5 sm:px-2 py-0.5 sm:py-1 border border-border rounded self-start whitespace-nowrap">
                   <ClockIcon className="w-3 h-3" />
                   Due {new Date(decision.dueDate).toLocaleDateString('en-AE', { day: 'numeric', month: 'short' })}
                 </span>
               </div>
 
-              <h1 className="text-xl font-semibold text-foreground mb-3">
+              <h1 className="text-lg sm:text-xl font-semibold text-foreground mb-2 sm:mb-3">
                 {decision.title}
               </h1>
-              <p className="text-[14px] text-muted-foreground mb-6">
+              <p className="text-[13px] sm:text-[14px] text-muted-foreground mb-4 sm:mb-6">
                 {decision.description}
               </p>
 
               {/* Key Metrics */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-border">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-4 border-t border-border">
                 <div>
                   <p className="text-[11px] text-muted-foreground mb-1">Value</p>
                   <p className="text-lg font-semibold text-foreground tabular-nums">
@@ -246,10 +246,10 @@ export default function ChairmanDecisionDetail({ params }: PageProps) {
           {/* Precedents */}
           {decision.precedents && decision.precedents.length > 0 && (
             <Card>
-              <CardHeader className="pb-3">
+              <CardHeader className="pb-3 px-4 sm:px-6">
                 <CardTitle className="text-[15px] font-medium">Historical Precedents</CardTitle>
               </CardHeader>
-              <CardContent className="pt-0">
+              <CardContent className="pt-0 px-4 sm:px-6">
                 <div className="space-y-2">
                   {decision.precedents.map((precedent) => (
                     <Button
@@ -259,14 +259,14 @@ export default function ChairmanDecisionDetail({ params }: PageProps) {
                       variant="outline"
                       size="sm"
                       className={cn(
-                        "w-full h-auto justify-between p-3 text-left border border-border transition-colors",
+                        "w-full h-auto flex-col sm:flex-row sm:justify-between p-3 text-left border border-border transition-colors gap-2 sm:gap-4",
                         precedent.precedentDecisionId
                           ? "hover:bg-secondary/50 cursor-pointer"
                           : "cursor-default"
                       )}
                     >
-                      <div>
-                        <p className="text-[13px] font-medium text-foreground">{precedent.title}</p>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[13px] font-medium text-foreground line-clamp-2 sm:line-clamp-1">{precedent.title}</p>
                         <p className="text-[11px] text-muted-foreground">
                           {new Date(precedent.date).toLocaleDateString('en-AE', { 
                             month: 'short', 
@@ -274,12 +274,12 @@ export default function ChairmanDecisionDetail({ params }: PageProps) {
                           })}
                         </p>
                       </div>
-                      <div className="flex items-center gap-4">
-                        <div className="text-right">
+                      <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4 flex-shrink-0">
+                        <div className="sm:text-right">
                           <p className="text-[11px] text-muted-foreground">Similarity</p>
                           <p className="text-[13px] font-medium text-foreground tabular-nums">{precedent.similarity}%</p>
                         </div>
-                        <span className="text-[11px] px-2 py-0.5 bg-secondary rounded capitalize">
+                        <span className="text-[11px] px-2 py-0.5 bg-secondary rounded capitalize whitespace-nowrap">
                           {precedent.outcome}
                         </span>
                       </div>
@@ -293,10 +293,10 @@ export default function ChairmanDecisionDetail({ params }: PageProps) {
         </div>
 
         {/* Sidebar */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {/* Action Card - with glow to draw attention */}
-          <Card className="sticky top-24 glow-border-subtle">
-            <CardContent className="p-6">
+          <Card className="lg:sticky lg:top-24 glow-border-subtle">
+            <CardContent className="p-4 sm:p-6">
               <h3 className="text-[14px] font-semibold text-foreground mb-4">Your Decision</h3>
               
               {actionNotice && (
@@ -338,7 +338,7 @@ export default function ChairmanDecisionDetail({ params }: PageProps) {
                         Execute
                       </button>
                     </DialogTrigger>
-                    <DialogContent className="sm:max-w-lg">
+                    <DialogContent className="sm:max-w-lg max-h-[90vh] overflow-y-auto">
                       <DialogHeader>
                         <DialogTitle>Confirm execution</DialogTitle>
                         <DialogDescription>
@@ -360,8 +360,8 @@ export default function ChairmanDecisionDetail({ params }: PageProps) {
                           <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-2">What will happen</p>
                           <ul className="space-y-2">
                             {executionSteps.map((step, index) => (
-                              <li key={index} className="flex gap-2">
-                                <span className="text-muted-foreground">•</span>
+                              <li key={index} className="flex gap-2 text-[12px] sm:text-[13px]">
+                                <span className="text-muted-foreground flex-shrink-0">•</span>
                                 <span className="text-foreground">{step}</span>
                               </li>
                             ))}
@@ -369,7 +369,7 @@ export default function ChairmanDecisionDetail({ params }: PageProps) {
                         </div>
                         <div>
                           <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-2">Systems touched</p>
-                          <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-1.5 sm:gap-2">
                             {executionSystems.map((system) => (
                               <Badge key={system} variant="outline" className="text-[10px]">
                                 {system}
@@ -386,13 +386,13 @@ export default function ChairmanDecisionDetail({ params }: PageProps) {
                                   key={milestone.id}
                                   className="flex items-center justify-between rounded-lg border border-border/70 px-3 py-2 text-[12px]"
                                 >
-                                  <div>
-                                    <p className="text-foreground">{milestone.title}</p>
+                                  <div className="min-w-0 flex-1 mr-2">
+                                    <p className="text-foreground truncate">{milestone.title}</p>
                                     <p className="text-[11px] text-muted-foreground capitalize">
                                       {milestone.status.replace('_', ' ')}
                                     </p>
                                   </div>
-                                  <span className="text-muted-foreground">{milestone.eta ?? '—'}</span>
+                                  <span className="text-muted-foreground flex-shrink-0">{milestone.eta ?? '—'}</span>
                                 </div>
                               ))
                             ) : (
@@ -403,12 +403,12 @@ export default function ChairmanDecisionDetail({ params }: PageProps) {
                           </div>
                         </div>
                       </div>
-                      <DialogFooter className="gap-2 sm:justify-end">
+                      <DialogFooter className="gap-2 sm:justify-end flex-col-reverse sm:flex-row mt-4">
                         <DialogClose asChild>
-                          <Button variant="outline">Cancel</Button>
+                          <Button variant="outline" className="w-full sm:w-auto">Cancel</Button>
                         </DialogClose>
                         <button
-                          className="btn-execute"
+                          className="btn-execute w-full sm:w-auto"
                           onClick={handleExecuteConfirm}
                         >
                           Confirm execution

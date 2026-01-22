@@ -54,38 +54,38 @@ export default function AnalyticsPage() {
   const chartMuted = 'var(--muted-foreground)';
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-8 space-y-10">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-6 sm:space-y-10">
       {/* Subtitle */}
       <div className="flex items-center justify-between">
-        <p className="text-[14px] text-muted-foreground">Pipeline insights and trends</p>
+        <p className="text-[13px] sm:text-[14px] text-muted-foreground">Pipeline insights and trends</p>
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-4 gap-6 pt-6 border-t border-border">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-4 sm:pt-6 border-t border-border">
         <div>
-          <p className="text-2xl font-medium tabular-nums">{analytics.total}</p>
-          <p className="text-[12px] text-muted-foreground mt-1">Total Decisions</p>
+          <p className="text-xl sm:text-2xl font-medium tabular-nums">{analytics.total}</p>
+          <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1">Total Decisions</p>
         </div>
         <div>
-          <p className="text-2xl font-medium tabular-nums">18h</p>
-          <p className="text-[12px] text-muted-foreground mt-1">Avg Cycle Time</p>
+          <p className="text-xl sm:text-2xl font-medium tabular-nums">18h</p>
+          <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1">Avg Cycle Time</p>
         </div>
         <div>
-          <p className="text-2xl font-medium tabular-nums">56</p>
-          <p className="text-[12px] text-muted-foreground mt-1">Weekly Throughput</p>
+          <p className="text-xl sm:text-2xl font-medium tabular-nums">56</p>
+          <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1">Weekly Throughput</p>
         </div>
         <div>
-          <p className="text-2xl font-medium tabular-nums">87%</p>
-          <p className="text-[12px] text-muted-foreground mt-1">AI Accuracy</p>
+          <p className="text-xl sm:text-2xl font-medium tabular-nums">87%</p>
+          <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1">AI Accuracy</p>
         </div>
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
         {/* By Status */}
         <div>
           <h3 className="text-title mb-4">By Status</h3>
-          <div className="h-[260px] border border-border rounded-xl p-4 bg-card/60 shadow-sm">
+          <div className="h-[220px] sm:h-[260px] border border-border rounded-xl p-3 sm:p-4 bg-card/60 shadow-sm">
             {isClient && (
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={statusData} layout="vertical">
@@ -112,7 +112,7 @@ export default function AnalyticsPage() {
         {/* Weekly Trend */}
         <div>
           <h3 className="text-title mb-4">Weekly Trend</h3>
-          <div className="h-[260px] border border-border rounded-xl p-4 bg-card/60 shadow-sm">
+          <div className="h-[220px] sm:h-[260px] border border-border rounded-xl p-3 sm:p-4 bg-card/60 shadow-sm">
             {isClient && (
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={trendData}>
@@ -152,7 +152,7 @@ export default function AnalyticsPage() {
       {/* By Category */}
       <div>
         <h3 className="text-title mb-4">By Category</h3>
-        <div className="h-[220px] border border-border rounded-xl p-4 bg-card/60 shadow-sm">
+        <div className="h-[180px] sm:h-[220px] border border-border rounded-xl p-3 sm:p-4 bg-card/60 shadow-sm">
           {isClient && (
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={categoryData}>
@@ -179,27 +179,27 @@ export default function AnalyticsPage() {
       {/* Recent Decisions Table */}
       <div>
         <h3 className="text-title mb-4">Recent Decisions</h3>
-        <div className="border border-border rounded-lg overflow-hidden">
-          <table className="w-full text-[13px]">
+        <div className="border border-border rounded-lg overflow-x-auto">
+          <table className="w-full text-[12px] sm:text-[13px] min-w-[500px]">
             <thead>
               <tr className="border-b border-border">
-                <th className="text-left text-[11px] font-medium uppercase tracking-wider px-4 py-3 text-muted-foreground">ID</th>
-                <th className="text-left text-[11px] font-medium uppercase tracking-wider px-4 py-3 text-muted-foreground">Title</th>
-                <th className="text-left text-[11px] font-medium uppercase tracking-wider px-4 py-3 text-muted-foreground">Category</th>
-                <th className="text-right text-[11px] font-medium uppercase tracking-wider px-4 py-3 text-muted-foreground">Value</th>
-                <th className="text-right text-[11px] font-medium uppercase tracking-wider px-4 py-3 text-muted-foreground">Confidence</th>
+                <th className="text-left text-[10px] sm:text-[11px] font-medium uppercase tracking-wider px-3 sm:px-4 py-2.5 sm:py-3 text-muted-foreground">ID</th>
+                <th className="text-left text-[10px] sm:text-[11px] font-medium uppercase tracking-wider px-3 sm:px-4 py-2.5 sm:py-3 text-muted-foreground">Title</th>
+                <th className="text-left text-[10px] sm:text-[11px] font-medium uppercase tracking-wider px-3 sm:px-4 py-2.5 sm:py-3 text-muted-foreground hidden sm:table-cell">Category</th>
+                <th className="text-right text-[10px] sm:text-[11px] font-medium uppercase tracking-wider px-3 sm:px-4 py-2.5 sm:py-3 text-muted-foreground">Value</th>
+                <th className="text-right text-[10px] sm:text-[11px] font-medium uppercase tracking-wider px-3 sm:px-4 py-2.5 sm:py-3 text-muted-foreground">Confidence</th>
               </tr>
             </thead>
             <tbody>
               {activeDecisions.slice(0, 4).map((decision) => (
                 <tr key={decision.id} className="border-b border-border last:border-0 hover:bg-secondary/50">
-                  <td className="px-4 py-3 text-muted-foreground">{decision.id}</td>
-                  <td className="px-4 py-3 font-medium">{decision.title}</td>
-                  <td className="px-4 py-3 text-muted-foreground capitalize">{decision.category}</td>
-                  <td className="px-4 py-3 text-right tabular-nums">
+                  <td className="px-3 sm:px-4 py-2.5 sm:py-3 text-muted-foreground">{decision.id}</td>
+                  <td className="px-3 sm:px-4 py-2.5 sm:py-3 font-medium max-w-[200px] truncate">{decision.title}</td>
+                  <td className="px-3 sm:px-4 py-2.5 sm:py-3 text-muted-foreground capitalize hidden sm:table-cell">{decision.category}</td>
+                  <td className="px-3 sm:px-4 py-2.5 sm:py-3 text-right tabular-nums">
                     {decision.value ? `AED ${(decision.value / 1000).toFixed(0)}K` : '—'}
                   </td>
-                  <td className="px-4 py-3 text-right tabular-nums text-muted-foreground">
+                  <td className="px-3 sm:px-4 py-2.5 sm:py-3 text-right tabular-nums text-muted-foreground">
                     {decision.aiConfidence ? `${decision.aiConfidence}%` : '—'}
                   </td>
                 </tr>

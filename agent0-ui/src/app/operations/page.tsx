@@ -101,35 +101,35 @@ export default function OperationsPipeline() {
   return (
     <div className="h-[calc(100vh-56px)] flex flex-col bg-background">
       {/* Stats */}
-      <div className="px-6 pt-6 pb-6">
+      <div className="px-4 sm:px-6 pt-4 sm:pt-6 pb-4 sm:pb-6">
         <div className="flex items-center justify-between mb-4">
           <p className="text-[13px] text-muted-foreground">Pipeline snapshot</p>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 border-b border-border pb-6">
-          <div className="rounded-lg border border-border/60 bg-secondary/30 px-4 py-3">
-            <p className="text-2xl font-medium tabular-nums text-primary">{analytics.total}</p>
-            <p className="text-[11px] text-muted-foreground mt-0.5">Total Active</p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 border-b border-border pb-4 sm:pb-6">
+          <div className="rounded-lg border border-border/60 bg-secondary/30 px-3 sm:px-4 py-2 sm:py-3">
+            <p className="text-xl sm:text-2xl font-medium tabular-nums text-primary">{analytics.total}</p>
+            <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-0.5">Total Active</p>
           </div>
-          <div className="rounded-lg border border-border/60 bg-secondary/30 px-4 py-3">
-            <p className="text-2xl font-medium tabular-nums text-emerald-600 dark:text-emerald-300">{analytics.byLevel[1]}</p>
-            <p className="text-[11px] text-muted-foreground mt-0.5">L1 Auto</p>
+          <div className="rounded-lg border border-border/60 bg-secondary/30 px-3 sm:px-4 py-2 sm:py-3">
+            <p className="text-xl sm:text-2xl font-medium tabular-nums text-emerald-600 dark:text-emerald-300">{analytics.byLevel[1]}</p>
+            <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-0.5">L1 Auto</p>
           </div>
-          <div className="rounded-lg border border-border/60 bg-secondary/30 px-4 py-3">
-            <p className="text-2xl font-medium tabular-nums text-amber-600 dark:text-amber-300">{analytics.byLevel[2]}</p>
-            <p className="text-[11px] text-muted-foreground mt-0.5">L2 Collab</p>
+          <div className="rounded-lg border border-border/60 bg-secondary/30 px-3 sm:px-4 py-2 sm:py-3">
+            <p className="text-xl sm:text-2xl font-medium tabular-nums text-amber-600 dark:text-amber-300">{analytics.byLevel[2]}</p>
+            <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-0.5">L2 Collab</p>
           </div>
-          <div className="rounded-lg border border-border/60 bg-secondary/30 px-4 py-3">
-            <p className="text-2xl font-medium tabular-nums text-indigo-600 dark:text-indigo-300">{analytics.byLevel[3]}</p>
-            <p className="text-[11px] text-muted-foreground mt-0.5">L3 Advisory</p>
+          <div className="rounded-lg border border-border/60 bg-secondary/30 px-3 sm:px-4 py-2 sm:py-3">
+            <p className="text-xl sm:text-2xl font-medium tabular-nums text-indigo-600 dark:text-indigo-300">{analytics.byLevel[3]}</p>
+            <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-0.5">L3 Advisory</p>
           </div>
         </div>
       </div>
 
       {/* Pipeline Controls */}
-      <div className="px-6 pb-4">
-        <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+      <div className="px-4 sm:px-6 pb-4">
+        <div className="flex flex-col gap-3">
           <div className="flex flex-1 flex-wrap items-center gap-2">
-            <div className="relative min-w-[220px] flex-1 lg:flex-none lg:w-72">
+            <div className="relative w-full sm:min-w-[220px] sm:flex-1 lg:flex-none lg:w-72">
               <MagnifyingGlassIcon className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
                 value={searchTerm}
@@ -138,103 +138,106 @@ export default function OperationsPipeline() {
                 className="h-9 pl-8"
               />
             </div>
-            <Select value={levelFilter} onValueChange={(value) => setLevelFilter(value as 'all' | '1' | '2' | '3')}>
-              <SelectTrigger className="h-9 w-[140px]">
-                <SelectValue placeholder="Level" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All levels</SelectItem>
-                <SelectItem value="1">L1 Auto</SelectItem>
-                <SelectItem value="2">L2 Collab</SelectItem>
-                <SelectItem value="3">L3 Advisory</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select
-              value={priorityFilter}
-              onValueChange={(value) => setPriorityFilter(value as 'all' | 'low' | 'medium' | 'high')}
-            >
-              <SelectTrigger className="h-9 w-[140px]">
-                <SelectValue placeholder="Priority" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All priority</SelectItem>
-                <SelectItem value="high">High</SelectItem>
-                <SelectItem value="medium">Medium</SelectItem>
-                <SelectItem value="low">Low</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select
-              value={sortBy}
-              onValueChange={(value) => setSortBy(value as 'due' | 'priority' | 'value' | 'confidence')}
-            >
-              <SelectTrigger className="h-9 w-[150px]">
-                <SelectValue placeholder="Sort by" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="due">Sort: Due date</SelectItem>
-                <SelectItem value="priority">Sort: Priority</SelectItem>
-                <SelectItem value="value">Sort: Value</SelectItem>
-                <SelectItem value="confidence">Sort: AI confidence</SelectItem>
-              </SelectContent>
-            </Select>
-            <Button
-              type="button"
-              variant={escalatedOnly ? 'secondary' : 'outline'}
-              size="sm"
-              className="h-9"
-              onClick={() => setEscalatedOnly((prev) => !prev)}
-            >
-              Escalated
-            </Button>
-            {hasFilters && (
+            <div className="flex flex-wrap gap-2">
+              <Select value={levelFilter} onValueChange={(value) => setLevelFilter(value as 'all' | '1' | '2' | '3')}>
+                <SelectTrigger className="h-9 w-[110px] sm:w-[140px]">
+                  <SelectValue placeholder="Level" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All levels</SelectItem>
+                  <SelectItem value="1">L1 Auto</SelectItem>
+                  <SelectItem value="2">L2 Collab</SelectItem>
+                  <SelectItem value="3">L3 Advisory</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select
+                value={priorityFilter}
+                onValueChange={(value) => setPriorityFilter(value as 'all' | 'low' | 'medium' | 'high')}
+              >
+                <SelectTrigger className="h-9 w-[110px] sm:w-[140px]">
+                  <SelectValue placeholder="Priority" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All priority</SelectItem>
+                  <SelectItem value="high">High</SelectItem>
+                  <SelectItem value="medium">Medium</SelectItem>
+                  <SelectItem value="low">Low</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select
+                value={sortBy}
+                onValueChange={(value) => setSortBy(value as 'due' | 'priority' | 'value' | 'confidence')}
+              >
+                <SelectTrigger className="h-9 w-[120px] sm:w-[150px]">
+                  <SelectValue placeholder="Sort by" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="due">Sort: Due date</SelectItem>
+                  <SelectItem value="priority">Sort: Priority</SelectItem>
+                  <SelectItem value="value">Sort: Value</SelectItem>
+                  <SelectItem value="confidence">Sort: AI confidence</SelectItem>
+                </SelectContent>
+              </Select>
               <Button
                 type="button"
-                variant="ghost"
+                variant={escalatedOnly ? 'secondary' : 'outline'}
                 size="sm"
-                className="h-9 text-muted-foreground"
-                onClick={() => {
-                  setSearchTerm('');
-                  setLevelFilter('all');
-                  setPriorityFilter('all');
-                  setSortBy('due');
-                  setEscalatedOnly(false);
-                }}
+                className="h-9"
+                onClick={() => setEscalatedOnly((prev) => !prev)}
               >
-                Clear
+                Escalated
               </Button>
-            )}
+              {hasFilters && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="h-9 text-muted-foreground"
+                  onClick={() => {
+                    setSearchTerm('');
+                    setLevelFilter('all');
+                    setPriorityFilter('all');
+                    setSortBy('due');
+                    setEscalatedOnly(false);
+                  }}
+                >
+                  Clear
+                </Button>
+              )}
+            </div>
           </div>
-          <div className="flex items-center gap-3 justify-between lg:justify-end">
+          <div className="flex items-center gap-3 justify-between">
             <span className="text-[11px] text-muted-foreground tabular-nums">
               Showing {filteredDecisions.length} of {analytics.total}
             </span>
             <Button size="sm" className="h-9">
               <PlusIcon className="w-4 h-4 mr-1" />
-              New decision
+              <span className="hidden sm:inline">New decision</span>
+              <span className="sm:hidden">New</span>
             </Button>
           </div>
         </div>
       </div>
 
       {/* Kanban Board */}
-      <div className="flex-1 overflow-x-auto overflow-y-auto px-6 pb-6 min-h-0">
-        <div className="flex gap-3 min-h-full">
+      <div className="flex-1 overflow-x-auto overflow-y-auto px-4 sm:px-6 pb-4 sm:pb-6 min-h-0">
+        <div className="flex gap-2 sm:gap-3 min-h-full min-w-max sm:min-w-0">
           {pipelineColumns.map((column) => {
             const columnDecisions = filteredDecisions.filter((decision) => column.statuses.includes(decision.status));
 
             return (
-              <div key={column.id} className="flex-shrink-0 w-64">
+              <div key={column.id} className="flex-shrink-0 w-[280px] sm:w-64">
                 <div className="h-full border border-border rounded-lg flex flex-col">
                   {/* Column Header */}
-                  <div className="px-4 py-3 border-b border-border flex items-center justify-between">
-                    <span className="text-[13px] font-medium">{column.label}</span>
+                  <div className="px-3 sm:px-4 py-2.5 sm:py-3 border-b border-border flex items-center justify-between">
+                    <span className="text-[12px] sm:text-[13px] font-medium">{column.label}</span>
                     <span className="text-[11px] text-muted-foreground tabular-nums">
                       {columnDecisions.length}
                     </span>
                   </div>
                   
                   {/* Cards */}
-                  <div className="flex-1 p-2 space-y-2">
+                  <div className="flex-1 p-1.5 sm:p-2 space-y-1.5 sm:space-y-2 overflow-y-auto max-h-[calc(100vh-320px)]">
                     {columnDecisions.map((decision) => (
                       <PipelineCard 
                         key={decision.id}
@@ -348,19 +351,19 @@ function PipelineCard({ decision, onClick }: PipelineCardProps) {
   return (
     <div 
       onClick={onClick}
-      className="p-3 rounded-lg border border-border hover:border-foreground/20 hover:shadow-sm cursor-pointer transition-colors bg-card"
+      className="p-2.5 sm:p-3 rounded-lg border border-border hover:border-foreground/20 hover:shadow-sm cursor-pointer transition-colors bg-card"
     >
       {/* Header */}
-      <div className="flex items-center justify-between gap-2 mb-2">
-        <div className="flex items-center gap-2 flex-wrap">
+      <div className="flex items-start justify-between gap-1.5 mb-2">
+        <div className="flex items-center gap-1.5 flex-wrap">
           <span className="text-[10px] text-muted-foreground">L{decision.level}</span>
-          <Badge variant="outline" className={cn("text-[10px]", priorityTone[priority])}>
-            {priorityLabel} priority
+          <Badge variant="outline" className={cn("text-[9px] sm:text-[10px] px-1.5", priorityTone[priority])}>
+            {priorityLabel}
           </Badge>
           {decision.escalatedFrom && (
             <Badge
               variant="outline"
-              className="text-[10px] bg-amber-500/10 text-amber-700 border-amber-500/20 dark:text-amber-300"
+              className="text-[9px] sm:text-[10px] px-1.5 bg-amber-500/10 text-amber-700 border-amber-500/20 dark:text-amber-300"
             >
               Escalated
             </Badge>
@@ -368,7 +371,7 @@ function PipelineCard({ decision, onClick }: PipelineCardProps) {
         </div>
         <Badge
           variant="outline"
-          className={cn("text-[10px]", dueMeta.className)}
+          className={cn("text-[9px] sm:text-[10px] px-1.5 whitespace-nowrap", dueMeta.className)}
           title={formatDate(decision.dueDate)}
         >
           {dueMeta.label}
@@ -376,15 +379,15 @@ function PipelineCard({ decision, onClick }: PipelineCardProps) {
       </div>
 
       {/* Title */}
-      <h4 className="text-[13px] font-medium mb-2 line-clamp-2 leading-snug">
+      <h4 className="text-[12px] sm:text-[13px] font-medium mb-2 line-clamp-2 leading-snug">
         {decision.title}
       </h4>
       <div className="mb-2">
-        <CeoPillarBadge pillar={decision.ceoPillar} className="bg-secondary/50" />
+        <CeoPillarBadge pillar={decision.ceoPillar} className="bg-secondary/50 text-[10px]" />
       </div>
 
       {/* Meta */}
-      <div className="flex items-center gap-2 text-[11px] text-muted-foreground mb-2 min-w-0">
+      <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-muted-foreground mb-2 min-w-0">
         <span className="truncate">{department?.shortName || '—'}</span>
         <span>·</span>
         <span className="truncate">{owner}</span>
@@ -393,31 +396,31 @@ function PipelineCard({ decision, onClick }: PipelineCardProps) {
       <div className="flex items-center justify-between text-[10px] text-muted-foreground mb-2">
         <div className="flex items-center gap-1">
           <span className={cn("h-1.5 w-1.5 rounded-full", slaMeta.dot)} />
-          <span className={cn("text-[10px]", slaMeta.text)}>{slaMeta.label}</span>
+          <span className={cn("text-[9px] sm:text-[10px]", slaMeta.text)}>{slaMeta.label}</span>
         </div>
         {queuePosition && (
-          <span className="text-[10px] text-muted-foreground tabular-nums">Queue #{queuePosition}</span>
+          <span className="text-[9px] sm:text-[10px] text-muted-foreground tabular-nums">Queue #{queuePosition}</span>
         )}
       </div>
 
       {/* Footer */}
       <div className="flex items-center justify-between pt-2 border-t border-border">
         {decision.value ? (
-          <span className="text-[12px] font-medium tabular-nums">
+          <span className="text-[11px] sm:text-[12px] font-medium tabular-nums">
             AED {formatValue(decision.value)}
           </span>
         ) : (
-          <span className="text-[11px] text-muted-foreground">—</span>
+          <span className="text-[10px] sm:text-[11px] text-muted-foreground">—</span>
         )}
         {decision.aiConfidence && (
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-1 bg-secondary rounded-full overflow-hidden">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <div className="w-6 sm:w-8 h-1 bg-secondary rounded-full overflow-hidden">
               <div 
                 className="h-full bg-foreground rounded-full"
                 style={{ width: `${decision.aiConfidence}%` }}
               />
             </div>
-            <span className="text-[10px] text-muted-foreground tabular-nums">{decision.aiConfidence}%</span>
+            <span className="text-[9px] sm:text-[10px] text-muted-foreground tabular-nums">{decision.aiConfidence}%</span>
           </div>
         )}
       </div>

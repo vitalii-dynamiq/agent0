@@ -199,7 +199,7 @@ export function AIChat({
       </ScrollArea>
 
       {/* Input */}
-      <form onSubmit={handleSubmit} className="pt-4 border-t border-border">
+      <form onSubmit={handleSubmit} className="pt-3 sm:pt-4 border-t border-border">
         {showVoice && isRecording && (
           <div className="mb-3 rounded-lg border border-border bg-secondary/40 p-3">
             <div className="flex items-center justify-between">
@@ -223,7 +223,7 @@ export function AIChat({
             </div>
           </div>
         )}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           {enableAttachments && (
             <>
               <Button
@@ -232,9 +232,9 @@ export function AIChat({
                 size="icon"
                 shape="squared"
                 onClick={handleAttach}
-                className="h-9 w-9"
+                className="h-11 w-11 sm:h-9 sm:w-9 flex-shrink-0"
               >
-                <UploadIcon className="w-3.5 h-3.5" />
+                <UploadIcon className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
               </Button>
               <input
                 ref={fileInputRef}
@@ -252,33 +252,33 @@ export function AIChat({
               shape="squared"
               onClick={onToggleRecording}
               className={cn(
-                "h-9 w-9 border border-border",
+                "h-11 w-11 sm:h-9 sm:w-9 border border-border flex-shrink-0",
                 isRecording
                   ? "bg-primary text-primary-foreground hover:bg-primary/90"
                   : "bg-secondary text-foreground hover:bg-accent"
               )}
             >
               {isRecording ? (
-                <StopIcon className="w-3.5 h-3.5" />
+                <StopIcon className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
               ) : (
-                <SpeakerLoudIcon className="w-3.5 h-3.5" />
+                <SpeakerLoudIcon className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
               )}
             </Button>
           )}
-          <div className="flex-1 relative">
+          <div className="flex-1 relative min-w-0">
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder={placeholder}
               disabled={isLoading}
-              className="pr-12 h-12 rounded-[4px] text-[13px]"
+              className="pr-12 h-11 sm:h-12 rounded-[4px] text-[14px] sm:text-[13px]"
             />
             <Button
               type="submit"
               size="icon"
               shape="squared"
               disabled={(!input.trim() && attachments.length === 0) || isLoading}
-              className="absolute right-1.5 top-1/2 -translate-y-1/2 h-9 w-9"
+              className="absolute right-1.5 top-1/2 -translate-y-1/2 h-8 w-8 sm:h-9 sm:w-9"
             >
               <PaperPlaneIcon className="w-4 h-4" />
             </Button>
@@ -324,7 +324,7 @@ export function AIChat({
           </div>
         )}
         {quickPrompts.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-3 flex flex-wrap gap-1.5 sm:gap-2 max-h-[120px] sm:max-h-none overflow-y-auto sm:overflow-visible">
             {quickPrompts.map((prompt) => (
               <Button
                 key={prompt.id}
@@ -334,7 +334,7 @@ export function AIChat({
                 variant="outline"
                 size="sm"
                 className={cn(
-                  "rounded-full px-3 py-1.5 text-[12px]",
+                  "rounded-full px-2.5 sm:px-3 py-1.5 text-[11px] sm:text-[12px]",
                   "bg-background hover:bg-accent/60",
                   "disabled:opacity-50 disabled:cursor-not-allowed"
                 )}

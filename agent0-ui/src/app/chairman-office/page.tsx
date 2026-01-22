@@ -170,33 +170,33 @@ export default function ChairmanDashboard() {
 
   return (
     <div className="min-h-[calc(100vh-56px)] bg-background">
-      <div className="max-w-5xl mx-auto px-6 pt-12 pb-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-6 sm:pt-12 pb-6 sm:pb-10">
         <div className="flex items-center justify-between mb-2">
           <p className="text-caption">
             {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
           </p>
         </div>
-        <h1 className="text-headline">{getGreeting()}</h1>
+        <h1 className="text-[24px] sm:text-headline font-extrabold tracking-[-0.04em]">{getGreeting()}</h1>
 
-        <div className="flex gap-12 mt-10 pt-6 border-t border-border">
+        <div className="flex gap-6 sm:gap-12 mt-6 sm:mt-10 pt-4 sm:pt-6 border-t border-border">
           <div>
-            <p className="text-2xl font-medium tabular-nums text-primary">{pendingDecisions.length}</p>
-            <p className="text-[12px] text-muted-foreground mt-1">Pending</p>
+            <p className="text-xl sm:text-2xl font-medium tabular-nums text-primary">{pendingDecisions.length}</p>
+            <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1">Pending</p>
           </div>
           <div>
-            <p className="text-2xl font-medium tabular-nums text-success">{autoApprovedDecisions.length}</p>
-            <p className="text-[12px] text-muted-foreground mt-1">Auto-approved</p>
+            <p className="text-xl sm:text-2xl font-medium tabular-nums text-success">{autoApprovedDecisions.length}</p>
+            <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1">Auto-approved</p>
           </div>
           <div>
-            <p className="text-2xl font-medium tabular-nums">{todaysMeetings.length}</p>
-            <p className="text-[12px] text-muted-foreground mt-1">Meetings</p>
+            <p className="text-xl sm:text-2xl font-medium tabular-nums">{todaysMeetings.length}</p>
+            <p className="text-[11px] sm:text-[12px] text-muted-foreground mt-1">Meetings</p>
           </div>
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 pb-16 space-y-12">
-        <div className="grid grid-cols-5 gap-12">
-          <div className="col-span-3 space-y-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-8 sm:pb-16 space-y-8 sm:space-y-12">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+          <div className="lg:col-span-3 space-y-8 sm:space-y-12">
             <section>
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-title">Requires decision</h2>
@@ -215,23 +215,23 @@ export default function ChairmanDashboard() {
                     href={`/chairman-office/decision/${decision.id}`}
                     className="block"
                   >
-                    <div className="p-4 border border-border rounded-xl transition-all duration-200 card-glow">
-                      <div className="flex items-start justify-between gap-4">
+                    <div className="p-3 sm:p-4 border border-border rounded-xl transition-all duration-200 card-glow">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 text-[11px] text-muted-foreground mb-1.5">
                             <span>L{decision.level}</span>
                             <span>·</span>
                             <span>{decision.category}</span>
                           </div>
-                          <h3 className="text-[14px] font-medium text-foreground truncate">
+                          <h3 className="text-[14px] font-medium text-foreground line-clamp-2 sm:truncate">
                             {decision.title}
                           </h3>
                         </div>
-                        <div className="text-right flex-shrink-0">
+                        <div className="flex justify-between sm:flex-col sm:text-right flex-shrink-0">
                           <p className="text-[14px] font-medium tabular-nums">
                             {decision.value ? `AED ${formatValue(decision.value)}` : '—'}
                           </p>
-                          <p className="text-[11px] text-muted-foreground mt-0.5">
+                          <p className="text-[11px] text-muted-foreground sm:mt-0.5">
                             Due {new Date(decision.dueDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                           </p>
                         </div>
@@ -260,15 +260,15 @@ export default function ChairmanDashboard() {
                     href={`/chairman-office/decision/${decision.id}`}
                     className="block"
                   >
-                    <div className="p-4 border border-border rounded-xl transition-all duration-200 card-glow">
-                      <div className="flex items-start justify-between gap-4">
+                    <div className="p-3 sm:p-4 border border-border rounded-xl transition-all duration-200 card-glow">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 text-[11px] text-muted-foreground mb-1.5">
                             <span className="text-success">✓ Auto-approved</span>
                             <span>·</span>
                             <span>{decision.aiConfidence ?? '—'}% confidence</span>
                           </div>
-                          <h3 className="text-[14px] font-medium text-foreground truncate">
+                          <h3 className="text-[14px] font-medium text-foreground line-clamp-2 sm:truncate">
                             {decision.title}
                           </h3>
                         </div>
@@ -285,7 +285,7 @@ export default function ChairmanDashboard() {
             </section>
           </div>
 
-          <div className="col-span-2 space-y-10">
+          <div className="lg:col-span-2 space-y-8 sm:space-y-10">
             <section>
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-title">Meetings today</h2>
@@ -304,19 +304,19 @@ export default function ChairmanDashboard() {
                     href={`/chairman-office/meeting/${meeting.id}`}
                     className="block"
                   >
-                    <div className="p-4 border border-border rounded-xl transition-all duration-200 card-glow">
-                      <div className="flex items-start justify-between gap-4">
+                    <div className="p-3 sm:p-4 border border-border rounded-xl transition-all duration-200 card-glow">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-4">
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 text-[11px] text-muted-foreground mb-1.5">
                             <span className="font-medium tabular-nums">{meeting.time}</span>
                             <span>·</span>
                             <span>{meeting.duration}m</span>
                           </div>
-                          <h3 className="text-[14px] font-medium text-foreground truncate">
+                          <h3 className="text-[14px] font-medium text-foreground line-clamp-2 sm:truncate">
                             {meeting.title}
                           </h3>
                         </div>
-                        <div className="text-right flex-shrink-0">
+                        <div className="text-left sm:text-right flex-shrink-0 mt-1 sm:mt-0">
                           <p className="text-[11px] text-muted-foreground">{meeting.location || '—'}</p>
                         </div>
                       </div>
@@ -338,9 +338,9 @@ export default function ChairmanDashboard() {
                     key={signal.id}
                     type="button"
                     onClick={() => setSelectedSignal(signal)}
-                    className="w-full text-left p-4 border border-border rounded-xl transition-all duration-200 card-glow"
+                    className="w-full text-left p-3 sm:p-4 border border-border rounded-xl transition-all duration-200 card-glow"
                   >
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 text-[11px] text-muted-foreground mb-1.5">
                           <span className={cn(
@@ -358,11 +358,11 @@ export default function ChairmanDashboard() {
                           <span>·</span>
                           <span>{signal.category}</span>
                         </div>
-                        <h3 className="text-[14px] font-medium text-foreground truncate">
+                        <h3 className="text-[14px] font-medium text-foreground line-clamp-2 sm:truncate">
                           {signal.title}
                         </h3>
                       </div>
-                      <div className="text-right flex-shrink-0">
+                      <div className="text-left sm:text-right flex-shrink-0">
                         <p className="text-[11px] text-muted-foreground">{signal.summary}</p>
                       </div>
                     </div>
@@ -383,20 +383,20 @@ export default function ChairmanDashboard() {
                     key={news.id}
                     type="button"
                     onClick={() => setSelectedNews(news)}
-                    className="w-full text-left p-4 border border-border rounded-xl transition-all duration-200 card-glow"
+                    className="w-full text-left p-3 sm:p-4 border border-border rounded-xl transition-all duration-200 card-glow"
                   >
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 text-[11px] text-muted-foreground mb-1.5">
                           <span>{news.source}</span>
                           <span>·</span>
                           <span>{news.date}</span>
                         </div>
-                        <h3 className="text-[14px] font-medium text-foreground truncate">
+                        <h3 className="text-[14px] font-medium text-foreground line-clamp-2 sm:truncate">
                           {news.title}
                         </h3>
                       </div>
-                      <div className="text-right flex-shrink-0">
+                      <div className="text-left sm:text-right flex-shrink-0">
                         <p className="text-[11px] text-muted-foreground">{news.summary}</p>
                       </div>
                     </div>

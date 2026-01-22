@@ -374,7 +374,7 @@ export function ExecutiveAssistantChat({ basePath = '/chairman', className, hide
   };
 
   const renderDecisionsWidget = () => (
-    <div className="rounded-xl border border-border bg-background p-4">
+    <div className="rounded-xl border border-border bg-background p-3 sm:p-4">
       <div className="flex items-center justify-between mb-3">
         <div>
           <div className="flex items-center gap-2">
@@ -390,13 +390,13 @@ export function ExecutiveAssistantChat({ basePath = '/chairman', className, hide
           <Link
             key={decision.id}
             href={`${basePath}/decision/${decision.id}`}
-            className="flex items-start justify-between gap-3 rounded-lg border border-border/60 px-3 py-2 hover:bg-secondary/50 transition-colors"
+            className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-3 rounded-lg border border-border/60 px-3 py-2.5 hover:bg-secondary/50 transition-colors"
           >
-            <div className="min-w-0">
-              <p className="text-[12px] text-muted-foreground">L{decision.level} · {decision.category}</p>
-              <p className="text-[13px] font-medium text-foreground truncate">{decision.title}</p>
+            <div className="min-w-0 flex-1">
+              <p className="text-[11px] text-muted-foreground">L{decision.level} · {decision.category}</p>
+              <p className="text-[13px] font-medium text-foreground line-clamp-2 sm:truncate">{decision.title}</p>
             </div>
-            <div className="text-right flex-shrink-0">
+            <div className="flex items-center justify-between sm:flex-col sm:items-end sm:text-right flex-shrink-0 mt-1 sm:mt-0">
               <p className="text-[12px] font-medium tabular-nums">{formatValue(decision.value)}</p>
               <p className="text-[11px] text-muted-foreground">Due {formatShortDate(decision.dueDate)}</p>
             </div>
@@ -410,7 +410,7 @@ export function ExecutiveAssistantChat({ basePath = '/chairman', className, hide
   );
 
   const renderMeetingsWidget = () => (
-    <div className="rounded-xl border border-border bg-background p-4">
+    <div className="rounded-xl border border-border bg-background p-3 sm:p-4">
       <div className="flex items-center justify-between mb-3">
         <div>
           <div className="flex items-center gap-2">
@@ -426,13 +426,13 @@ export function ExecutiveAssistantChat({ basePath = '/chairman', className, hide
           <Link
             key={meeting.id}
             href={`${basePath}/meeting/${meeting.id}`}
-            className="flex items-start justify-between gap-3 rounded-lg border border-border/60 px-3 py-2 hover:bg-secondary/50 transition-colors"
+            className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-3 rounded-lg border border-border/60 px-3 py-2.5 hover:bg-secondary/50 transition-colors"
           >
-            <div className="min-w-0">
-              <p className="text-[12px] text-muted-foreground">{meeting.time} · {meeting.duration}m</p>
-              <p className="text-[13px] font-medium text-foreground truncate">{meeting.title}</p>
+            <div className="min-w-0 flex-1">
+              <p className="text-[11px] text-muted-foreground">{meeting.time} · {meeting.duration}m</p>
+              <p className="text-[13px] font-medium text-foreground line-clamp-2 sm:truncate">{meeting.title}</p>
             </div>
-            <div className="text-[11px] text-muted-foreground text-right">
+            <div className="text-[11px] text-muted-foreground sm:text-right flex-shrink-0 mt-1 sm:mt-0">
               {meeting.location || '—'}
             </div>
           </Link>
@@ -445,7 +445,7 @@ export function ExecutiveAssistantChat({ basePath = '/chairman', className, hide
   );
 
   const renderSignalsWidget = () => (
-    <div className="rounded-xl border border-border bg-background p-4">
+    <div className="rounded-xl border border-border bg-background p-3 sm:p-4">
       <div className="mb-3">
         <div className="flex items-center gap-2">
           <span className="h-2 w-2 rounded-full bg-amber-500/80" />
@@ -459,9 +459,9 @@ export function ExecutiveAssistantChat({ basePath = '/chairman', className, hide
             key={signal.id}
             type="button"
             onClick={() => handleSignalClick(signal)}
-            className="w-full flex items-center justify-between gap-2 rounded-lg border border-border/60 px-3 py-2 text-[12px] text-muted-foreground hover:bg-secondary/50 transition-colors text-left"
+            className="w-full flex items-center justify-between gap-2 rounded-lg border border-border/60 px-3 py-2.5 text-[12px] text-muted-foreground hover:bg-secondary/50 transition-colors text-left"
           >
-            <span className="truncate flex-1 min-w-0">{signal.title}</span>
+            <span className="line-clamp-2 sm:truncate flex-1 min-w-0">{signal.title}</span>
             <ChevronRightIcon className="w-3.5 h-3.5 flex-shrink-0 text-muted-foreground" />
           </button>
         ))}
@@ -470,7 +470,7 @@ export function ExecutiveAssistantChat({ basePath = '/chairman', className, hide
   );
 
   const renderNewsWidget = () => (
-    <div className="rounded-xl border border-border bg-background p-4">
+    <div className="rounded-xl border border-border bg-background p-3 sm:p-4">
       <div className="mb-3">
         <div className="flex items-center gap-2">
           <span className="h-2 w-2 rounded-full bg-indigo-500/80" />
@@ -484,9 +484,9 @@ export function ExecutiveAssistantChat({ basePath = '/chairman', className, hide
             key={item.id}
             type="button"
             onClick={() => handleNewsClick(item)}
-            className="w-full flex items-center justify-between gap-2 rounded-lg border border-border/60 px-3 py-2 text-[12px] text-muted-foreground hover:bg-secondary/50 transition-colors text-left"
+            className="w-full flex items-center justify-between gap-2 rounded-lg border border-border/60 px-3 py-2.5 text-[12px] text-muted-foreground hover:bg-secondary/50 transition-colors text-left"
           >
-            <span className="truncate flex-1 min-w-0">{item.title}</span>
+            <span className="line-clamp-2 sm:truncate flex-1 min-w-0">{item.title}</span>
             <ChevronRightIcon className="w-3.5 h-3.5 flex-shrink-0 text-muted-foreground" />
           </button>
         ))}
