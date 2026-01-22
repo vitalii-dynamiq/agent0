@@ -7,7 +7,10 @@ export const metadata: Metadata = {
   title: "Agent-0 | DGE Executive Platform",
   description: "Executive decision support platform for the Department of Government Enablement",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
   },
 };
 
