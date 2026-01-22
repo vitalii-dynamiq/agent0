@@ -1,0 +1,1254 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* 
+ * Agent-0 Design System
+ * Vercel/Linear Inspired: Ultra-minimal, monochromatic, Geist typography
+ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  
+  --color-navy: var(--navy);
+  --color-success: var(--success);
+  --color-destructive: var(--destructive);
+}
+
+:root {
+  --radius: 8px;
+  
+  /* Monochromatic palette */
+  --background: #FFFFFF;
+  --foreground: #0A0A0A;
+  
+  --card: #FFFFFF;
+  --card-foreground: #0A0A0A;
+  
+  --popover: #FFFFFF;
+  --popover-foreground: #0A0A0A;
+  
+  --primary: #4F6EF7;
+  --primary-foreground: #FFFFFF;
+  --primary-glow: rgba(79, 110, 247, 0.24);
+  
+  --secondary: #F3F5FF;
+  --secondary-foreground: #0A0A0A;
+  
+  --muted: #F3F5FF;
+  --muted-foreground: #71717A;
+  
+  --accent: #EEF2FF;
+  --accent-foreground: #1E2A6B;
+  
+  --success: #22C55E;
+  --destructive: #EF4444;
+  
+  --border: #E4E4E7;
+  --input: #E4E4E7;
+  --ring: #4F6EF7;
+  
+  --chart-1: #4F6EF7;
+  --chart-2: #3F3F46;
+  --chart-3: #71717A;
+  --chart-4: #A1A1AA;
+  --chart-5: #D4D4D8;
+  
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #0A0A0A;
+  --sidebar-primary: #0A0A0A;
+  --sidebar-primary-foreground: #FAFAFA;
+  --sidebar-accent: #F3F5FF;
+  --sidebar-accent-foreground: #0A0A0A;
+  --sidebar-border: #E4E4E7;
+  --sidebar-ring: #0A0A0A;
+  
+  --navy: #0A0A0A;
+  
+  /* Futurist accent - coral/red for emphasis */
+  --accent-pop: #E54545;
+  
+  /* Iridescent glow colors (balanced for light mode visibility) */
+  --glow-purple: rgba(79, 110, 247, 0.15);
+  --glow-cyan: rgba(0, 200, 180, 0.08);
+
+  /* Shadows - Vercel style */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  
+  /* Transitions */
+  --transition-fast: 100ms ease;
+  --transition-base: 150ms ease;
+}
+
+.dark {
+  color-scheme: dark;
+
+  /* Darker, more futuristic base - closer to pure black */
+  --background: #07080A;
+  --foreground: #E8EDF5;
+
+  --card: #0C0E12;
+  --card-foreground: #E8EDF5;
+
+  --popover: #0C0E12;
+  --popover-foreground: #E8EDF5;
+
+  --primary: #6E8CFF;
+  --primary-foreground: #FFFFFF;
+  --primary-glow: rgba(110, 140, 255, 0.24);
+
+  --secondary: #12151C;
+  --secondary-foreground: #DDE3EE;
+
+  --muted: #12151C;
+  --muted-foreground: #A4AEBD;
+
+  --accent: #1A1E28;
+  --accent-foreground: #DDE4FF;
+
+  /* Futurist accent - coral/red for emphasis */
+  --accent-pop: #FF5A5A;
+
+  --success: #6EE7B7;
+  --destructive: #F87171;
+
+  --border: #1E222C;
+  --input: #1E222C;
+  --ring: #6E8CFF;
+
+  --chart-1: #6E8CFF;
+  --chart-2: #9AA7FF;
+  --chart-3: #C1CBFF;
+  --chart-4: #8B95A5;
+  --chart-5: #5A6375;
+
+  --sidebar: #0A0C10;
+  --sidebar-foreground: #E8EDF5;
+  --sidebar-primary: #6E8CFF;
+  --sidebar-primary-foreground: #07080A;
+  --sidebar-accent: #1A1E28;
+  --sidebar-accent-foreground: #DDE4FF;
+  --sidebar-border: #1A1E28;
+  --sidebar-ring: #6E8CFF;
+
+  --navy: #6E8CFF;
+  
+  /* Iridescent glow colors */
+  --glow-purple: rgba(138, 43, 226, 0.15);
+  --glow-cyan: rgba(0, 255, 200, 0.08);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    @apply border-border;
+  }
+  
+  html {
+    /* Prevent font-size inflation on mobile */
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* Smooth scrolling for all browsers */
+    scroll-behavior: smooth;
+    /* Prevent horizontal overflow */
+    overflow-x: hidden;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: -0.011em;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent content from being hidden behind fixed elements */
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
+    /* Text rendering optimization */
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Normalize form elements across browsers */
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Remove default button styles */
+  button {
+    background: none;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  /* Fix Safari input styling */
+  input,
+  textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+  }
+  
+  /* Prevent iOS zoom on input focus */
+  @media screen and (max-width: 768px) {
+    input,
+    textarea,
+    select {
+      font-size: 16px !important;
+    }
+  }
+  
+  /* Normalize images */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Prevent text overflow issues */
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* Ensure tables don't break layout */
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  /* Geist Typography - Sharp, modern, futurist-influenced */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--foreground);
+  }
+  
+  h1 {
+    font-size: 40px;
+    line-height: 1.0;
+    letter-spacing: -0.045em;
+    font-weight: 700;
+  }
+  
+  h2 {
+    font-size: 28px;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+  }
+  
+  h3 {
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+  }
+  
+  h4 {
+    font-size: 15px;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  
+  p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+  }
+  
+  small {
+    font-size: 12px;
+    color: var(--muted-foreground);
+  }
+  
+  code, pre {
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+    font-size: 13px;
+    font-feature-settings: 'ss01' 1, 'ss02' 1;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Ensure all clickable elements have pointer cursor */
+  button,
+  [role="button"],
+  [type="button"],
+  [type="submit"],
+  [type="reset"],
+  select,
+  summary,
+  [tabindex]:not([tabindex="-1"]) {
+    cursor: pointer;
+  }
+  
+  ::selection {
+    background: rgba(79, 110, 247, 0.16);
+  }
+}
+
+/* Minimal scrollbar - Cross-browser */
+@layer base {
+  /* Webkit browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #E4E4E7;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #D4D4D8;
+  }
+  
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #E4E4E7 transparent;
+  }
+  
+  .dark * {
+    scrollbar-color: #3F3F46 transparent;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    background: #3F3F46;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #52525B;
+  }
+}
+
+/* Typography utilities */
+@layer utilities {
+  .text-display {
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+  }
+  
+  .text-headline {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 1.05;
+  }
+  
+  .text-title {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+  
+  .text-body {
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: -0.006em;
+  }
+  
+  .text-body-lg {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--muted-foreground);
+  }
+  
+  .text-caption {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+  
+  .text-mono {
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+    font-size: 13px;
+    letter-spacing: 0;
+  }
+  
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+  
+  .focus-ring:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+  
+  /* Futurist typography utilities */
+  .text-emphasis {
+    color: var(--accent-pop);
+  }
+  
+  .text-nav {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  
+  .text-nav-active {
+    color: var(--accent-pop);
+  }
+}
+
+/* Components */
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply px-4 py-2 text-[13px] font-medium transition-all cursor-pointer;
+    background: var(--primary);
+    color: var(--primary-foreground);
+    border-radius: 6px;
+  }
+  
+  .btn-primary:hover {
+    filter: brightness(0.95);
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 text-[13px] font-medium transition-all cursor-pointer;
+    background: transparent;
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  
+  .btn-secondary:hover {
+    background: var(--secondary);
+    border-color: var(--primary);
+  }
+  
+  .btn-ghost {
+    @apply px-3 py-1.5 text-[13px] font-medium transition-all cursor-pointer;
+    color: var(--muted-foreground);
+    border-radius: 6px;
+  }
+  
+  .btn-ghost:hover {
+    color: var(--primary);
+    background: var(--secondary);
+  }
+  
+  /* Cards */
+  .card-elevated {
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+  
+  .card-flat {
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+  
+  /* Input fields */
+  .input-field {
+    @apply w-full px-3 py-2 text-[14px] transition-all;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  
+  .input-field:focus {
+    outline: none;
+    border-color: var(--primary);
+  }
+  
+  .input-field::placeholder {
+    color: var(--muted-foreground);
+  }
+  
+  /* Navigation */
+  .nav-item {
+    @apply flex items-center gap-2 px-3 py-2 text-[13px] font-medium transition-all cursor-pointer;
+    color: var(--muted-foreground);
+    border-radius: 6px;
+  }
+  
+  .nav-item:hover {
+    color: var(--foreground);
+    background: var(--accent);
+  }
+  
+  .nav-item.active {
+    color: var(--foreground);
+    background: var(--accent);
+  }
+  
+  /* Futurist navigation - ALL CAPS with wide tracking */
+  .nav-futurist {
+    @apply flex items-center gap-2 px-3 py-2 transition-all cursor-pointer;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    border-radius: 6px;
+  }
+  
+  .nav-futurist:hover {
+    color: var(--foreground);
+  }
+  
+  .nav-futurist.active {
+    color: var(--accent-pop);
+  }
+  
+  /* Sidebar variant - keeps icons, adds tracking */
+  .nav-sidebar-futurist {
+    @apply flex items-center gap-2.5 px-3 py-2 transition-all cursor-pointer;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    border-radius: 6px;
+  }
+  
+  .nav-sidebar-futurist:hover {
+    color: var(--foreground);
+    background: var(--accent);
+  }
+  
+  .nav-sidebar-futurist.active {
+    color: var(--accent-pop);
+    background: var(--accent);
+  }
+  
+  /* Metric cards */
+  .metric-card {
+    @apply p-5;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .metric-value {
+    @apply text-3xl font-semibold tabular-nums;
+    letter-spacing: -0.03em;
+    color: var(--foreground);
+  }
+  
+  .metric-label {
+    @apply text-[12px] mt-1;
+    color: var(--muted-foreground);
+  }
+  
+  /* Data table */
+  .data-table {
+    @apply w-full text-[13px];
+  }
+  
+  .data-table th {
+    @apply text-left text-[11px] font-medium uppercase tracking-wider px-4 py-3;
+    color: var(--muted-foreground);
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .data-table td {
+    @apply px-4 py-3;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .data-table tbody tr:hover {
+    background: var(--accent);
+  }
+  
+  .data-table tbody tr {
+    cursor: pointer;
+  }
+  
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 text-[11px] font-medium;
+    background: var(--secondary);
+    color: var(--muted-foreground);
+    border-radius: 4px;
+  }
+  
+  .badge-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted-foreground);
+  }
+  
+  /* Progress bar */
+  .progress-bar {
+    @apply h-1 rounded-full overflow-hidden;
+    background: var(--secondary);
+  }
+  
+  .progress-bar-fill {
+    @apply h-full rounded-full;
+    background: var(--primary);
+  }
+  
+  /* Status dot */
+  .status-dot {
+    @apply w-1.5 h-1.5 rounded-full;
+    background: var(--muted-foreground);
+  }
+  
+  .status-dot.active {
+    background: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-glow);
+  }
+  
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--border);
+  }
+  
+  /* Avatar */
+  .avatar {
+    @apply flex items-center justify-center rounded-full text-[12px] font-medium;
+    background: var(--secondary);
+    color: var(--muted-foreground);
+  }
+  
+  /* Link style */
+  .link {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
+  }
+  
+  .link:hover {
+    opacity: 0.7;
+  }
+  
+  /* Clickable cards and items */
+  .card-clickable {
+    cursor: pointer;
+    transition: all 150ms ease;
+  }
+  
+  .card-clickable:hover {
+    border-color: var(--primary);
+  }
+}
+
+/* Animations */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 200ms ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 300ms ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(8px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+}
+
+/* Futurist effects */
+@layer utilities {
+  /* Subtle iridescent border glow */
+  .glow-border {
+    position: relative;
+    box-shadow: 
+      0 0 0 1px var(--glow-purple),
+      0 0 20px var(--glow-purple),
+      0 0 40px var(--glow-cyan);
+  }
+  
+  .glow-border-subtle {
+    box-shadow: 
+      0 0 0 1px rgba(138, 43, 226, 0.15),
+      0 0 20px rgba(138, 43, 226, 0.08);
+  }
+  
+  /* Card with glow on hover - for major interactive elements */
+  .card-glow {
+    transition: all 200ms ease;
+  }
+  
+  .card-glow:hover {
+    border-color: transparent;
+    box-shadow: 
+      0 0 0 1px var(--glow-purple),
+      0 0 20px var(--glow-purple),
+      0 0 40px var(--glow-cyan);
+  }
+  
+  /* Subtle card hover - for secondary elements */
+  .card-hover {
+    transition: border-color 150ms ease, background 150ms ease;
+  }
+  
+  .card-hover:hover {
+    border-color: var(--foreground);
+    background: var(--secondary);
+  }
+  
+  /* Increased negative space utilities */
+  .section-spacious {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  
+  .section-spacious-lg {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+  
+  .gap-spacious {
+    gap: 32px;
+  }
+  
+  .gap-spacious-lg {
+    gap: 48px;
+  }
+  
+  /* Page-level subtle glow border (optional - apply to main container) */
+  .page-glow {
+    position: relative;
+  }
+  
+  .page-glow::before {
+    content: '';
+    position: fixed;
+    inset: 4px;
+    border: 1px solid var(--glow-purple);
+    border-radius: 12px;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.5;
+  }
+}
+
+/* Action Buttons - squared style for futuristic feel */
+@layer components {
+  /* Approve button - success outline, squared */
+  .btn-approve {
+    @apply relative px-4 py-2 text-[13px] font-medium transition-all cursor-pointer;
+    border-radius: 3px;
+    background: transparent;
+    color: var(--success);
+    border: 1px solid var(--success);
+  }
+  
+  .btn-approve:hover {
+    background: rgba(34, 197, 94, 0.1);
+  }
+  
+  .btn-approve:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  /* Reject button - destructive outline, squared */
+  .btn-reject {
+    @apply relative px-4 py-2 text-[13px] font-medium transition-all cursor-pointer;
+    border-radius: 3px;
+    background: transparent;
+    color: var(--destructive);
+    border: 1px solid var(--destructive);
+  }
+  
+  .btn-reject:hover {
+    background: rgba(239, 68, 68, 0.1);
+  }
+  
+  .btn-reject:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  /* Execute button - primary outline, squared */
+  .btn-execute {
+    @apply relative px-4 py-2 text-[13px] font-medium transition-all cursor-pointer;
+    border-radius: 3px;
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+  }
+  
+  .btn-execute:hover {
+    background: rgba(110, 140, 255, 0.1);
+  }
+  
+  /* Confirm/Send button - solid primary, squared, with glow on hover */
+  .btn-confirm {
+    @apply relative px-4 py-2 text-[13px] font-medium transition-all cursor-pointer;
+    border-radius: 3px;
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  
+  .btn-confirm:hover {
+    box-shadow: 
+      0 0 0 1px var(--glow-purple),
+      0 0 15px var(--glow-purple);
+  }
+  
+  /* Primary action with glow - for send buttons, important CTAs */
+  .btn-glow {
+    @apply relative px-4 py-2 text-[13px] font-medium transition-all cursor-pointer;
+    border-radius: 3px;
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  
+  .btn-glow:hover {
+    box-shadow: 
+      0 0 0 1px var(--glow-purple),
+      0 0 20px var(--glow-purple),
+      0 0 40px var(--glow-cyan);
+  }
+  
+  /* Further-style CTA - pill shaped, dark with arrow */
+  .btn-cta {
+    @apply inline-flex items-center gap-3 px-6 py-3 text-[14px] font-medium transition-all cursor-pointer;
+    border-radius: 9999px;
+    background: var(--foreground);
+    color: var(--background);
+  }
+  
+  .btn-cta:hover {
+    opacity: 0.85;
+  }
+  
+  .btn-cta-outline {
+    @apply inline-flex items-center gap-3 px-6 py-3 text-[14px] font-medium transition-all cursor-pointer;
+    border-radius: 9999px;
+    background: transparent;
+    color: var(--foreground);
+    border: 1px solid var(--border);
+  }
+  
+  .btn-cta-outline:hover {
+    background: var(--secondary);
+    border-color: var(--foreground);
+  }
+}
+
+/* Risk Bars with semantic colors - simple fills */
+@layer components {
+  .risk-bar-track {
+    @apply h-1.5 rounded-full overflow-hidden;
+    background: var(--muted);
+  }
+  
+  .risk-bar-fill {
+    @apply h-full rounded-full transition-all;
+  }
+  
+  .risk-bar-fill[data-level="low"] {
+    background: var(--success);
+  }
+  
+  .risk-bar-fill[data-level="medium"] {
+    background: #F59E0B;
+  }
+  
+  .risk-bar-fill[data-level="high"] {
+    background: #F97316;
+  }
+  
+  .risk-bar-fill[data-level="critical"] {
+    background: var(--destructive);
+  }
+  
+  /* Risk level text colors */
+  .risk-text-low { color: var(--success); }
+  .risk-text-medium { color: #F59E0B; }
+  .risk-text-high { color: #F97316; }
+  .risk-text-critical { color: var(--destructive); }
+}
+
+/* Confidence/Progress bars - simple fills */
+@layer components {
+  .confidence-bar-track {
+    @apply rounded-full overflow-hidden;
+    background: var(--muted);
+  }
+  
+  .confidence-bar-fill {
+    @apply h-full rounded-full transition-all;
+  }
+  
+  .confidence-bar-fill[data-status="high"] {
+    background: var(--success);
+  }
+  
+  .confidence-bar-fill[data-status="medium"] {
+    background: var(--primary);
+  }
+  
+  .confidence-bar-fill[data-status="low"] {
+    background: var(--destructive);
+  }
+}
+
+/* Consistent Interactive Elements */
+@layer components {
+  /* Clickable list item - simple hover */
+  .list-item-glow {
+    @apply transition-colors duration-150;
+  }
+  
+  .list-item-glow:hover {
+    background: var(--secondary);
+  }
+  
+  /* Metric/stat card - subtle hover */
+  .metric-glow {
+    @apply transition-all duration-150;
+    border: 1px solid var(--border);
+  }
+  
+  .metric-glow:hover {
+    border-color: var(--foreground);
+    background: var(--secondary);
+  }
+  
+  /* Link with arrow that animates on hover */
+  .link-arrow {
+    @apply inline-flex items-center gap-1.5 text-[13px] text-muted-foreground transition-all;
+  }
+  
+  .link-arrow:hover {
+    color: var(--foreground);
+    gap: 8px;
+  }
+  
+  .link-arrow svg {
+    @apply transition-transform;
+  }
+  
+  .link-arrow:hover svg {
+    transform: translateX(3px);
+  }
+  
+  /* Further-style "LEARN MORE →" link */
+  .link-cta {
+    @apply inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-widest text-muted-foreground transition-all;
+  }
+  
+  .link-cta:hover {
+    color: var(--foreground);
+    gap: 10px;
+  }
+  
+  .link-cta svg {
+    @apply transition-transform;
+  }
+  
+  .link-cta:hover svg {
+    transform: translateX(3px);
+  }
+  
+  /* Tab button - futurist style */
+  .tab-futurist {
+    @apply px-4 py-2 text-[12px] font-medium rounded-lg transition-all;
+    letter-spacing: 0.02em;
+    color: var(--muted-foreground);
+  }
+  
+  .tab-futurist:hover {
+    color: var(--foreground);
+    background: var(--secondary);
+  }
+  
+  .tab-futurist.active {
+    color: var(--foreground);
+    background: var(--foreground);
+    color: var(--background);
+  }
+  
+  /* Primary dialog action button */
+  .btn-dialog-primary {
+    @apply px-4 py-2 text-[13px] font-medium rounded-lg transition-all;
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  
+  .btn-dialog-primary:hover {
+    opacity: 0.9;
+  }
+  
+  /* Table row - simple hover */
+  .table-row-glow {
+    @apply transition-colors duration-150;
+  }
+  
+  .table-row-glow:hover {
+    background: var(--secondary);
+  }
+}
+
+/* Cross-browser flexbox and grid fixes */
+@layer utilities {
+  /* Safe flexbox defaults */
+  .flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  .inline-flex {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+  }
+  
+  /* Prevent flex items from shrinking below content size */
+  .flex-shrink-0 {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+  }
+  
+  /* Fix Safari gap support fallback */
+  @supports not (gap: 1rem) {
+    .gap-2 > * + * {
+      margin-left: 0.5rem;
+    }
+    .gap-4 > * + * {
+      margin-left: 1rem;
+    }
+  }
+  
+  /* Safe truncation */
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+  
+  /* Line clamp cross-browser */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Prevent layout shift from scrollbar */
+  .scrollbar-gutter {
+    scrollbar-gutter: stable;
+  }
+}
+
+/* Notion-style editor */
+@layer components {
+  .notion-editor {
+    /* Ensure consistent rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .notion-editor [contenteditable] {
+    outline: none;
+    caret-color: var(--primary);
+  }
+  
+  .notion-editor [contenteditable]:empty::before {
+    content: attr(data-placeholder);
+    color: var(--muted-foreground);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  
+  .notion-editor [contenteditable]:focus:empty::before {
+    opacity: 0.4;
+  }
+}
+
+/* Focus visible for accessibility - Cross browser */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  
+  /* Remove Firefox focus ring */
+  ::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+  
+  /* Remove tap highlight on mobile */
+  button,
+  a,
+  [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Safe area insets for notched devices */
+@layer utilities {
+  .safe-area-inset-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  
+  .safe-area-inset-left {
+    padding-left: env(safe-area-inset-left, 0px);
+  }
+  
+  .safe-area-inset-right {
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+}
+
+/* Backdrop blur fallback for older browsers */
+@layer utilities {
+  .backdrop-blur-sm {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+  
+  .backdrop-blur {
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  
+  .backdrop-blur-lg {
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
+  
+  /* Fallback for browsers without backdrop-filter */
+  @supports not (backdrop-filter: blur(1px)) {
+    .backdrop-blur-sm,
+    .backdrop-blur,
+    .backdrop-blur-lg {
+      background-color: rgba(255, 255, 255, 0.95);
+    }
+    
+    .dark .backdrop-blur-sm,
+    .dark .backdrop-blur,
+    .dark .backdrop-blur-lg {
+      background-color: rgba(14, 17, 23, 0.95);
+    }
+  }
+  
+  /* Radial gradient for 3D element glow */
+  .bg-gradient-radial {
+    background: radial-gradient(ellipse at center, var(--tw-gradient-from) 0%, var(--tw-gradient-via) 50%, var(--tw-gradient-to) 100%);
+  }
+}
+
+/* Print */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}

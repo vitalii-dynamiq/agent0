@@ -1,0 +1,280 @@
+
+
+  SECTION A: Executive Decision Artefacts &amp; Processes  
+Q1. What artefacts for Executive Decision today? Can you share samples
+a) Classification/Coding for each decisions
+Answer:
+We use the CEO Excellence framework with 6 focus areas for Chairman decisions:
+Priority Setting &amp; Foresight: Long-term vision, strategy development, breaking strategy into operational priorities
+Operational Alignment &amp; Performance: Approvals, reviews, resolving blockers (50-60% of chairman's time)
+Team &amp; Talent Management: Org design, hiring, performance management, 1:1 coaching
+Engagement with Board/Top Leadership: HH engagement, ADEO, subcommittees (15-20% of time)
+Internal &amp; External Communication: Town halls, public communication (minimal time)
+Personal Effectiveness: Time allocation, calendar management, focus time (10-15%)
+For ADEO committees, proposals are classified into 4 archetypes: Law &amp; Regulatory, Capital &amp; Infrastructure, Platforms &amp; Data, and Programs &amp; Operations.
+⚠ TBC: No single "master code list" with numeric IDs per decision yet; this is a deliverable from the CM logic tree work.
+b) Decision Trigger (Scheduled/On-Demand)
+Answer:
+Category
+Details
+
+Scheduled / Recurring
+Biweekly DG catch-ups (30 min), vertical team sessions, ADEO committee cycles, annual KPIs/OKRs
+
+On-Demand
+DOA approvals (now batched twice daily), policy exceptions, risk actions, ad-hoc ADEO decisions
+
+c) Inputs for Decision (Forms, slides, readout etc)
+Answer:
+Chairman / CM Office Inputs:
+Progress update documents and KPI dashboards
+CM emails with blockers / "attention needed" points
+Meeting transcripts and notes (1:1s, reviews, steering meetings)
+ADEO submissions and operating documents
+Authority &amp; approval ledger, DOAs, DGE strategies, policy frameworks
+ADEO Committee Inputs:
+ECAS submissions (proposal forms + attachments)
+Archetype assignment + completeness checklist
+Evaluation questionnaires + scoring sheets
+Currently everything is document- and slide-based, with email / calendar / ECAS as the main systems.
+d) Policy/Criteria for each decision domains
+Answer:
+ADEO Proposal Evaluation – Full evaluation framework with 4 areas: Value &amp; Alignment, Feasibility &amp; Readiness, Financials &amp; Commercials, Governance &amp; Delivery. Each broken into components → subcomponents → question sets with scoring logic.
+Chairman Decisions – Decision Trees being developed for 3 POC areas:
+POC A: Business Progress Review – evaluate/challenge progress updates, resolve bottlenecks
+POC B: Operational Approvals within DOA – pre-screen, highlight risks &amp; trade-offs
+POC C: Setting Mid &amp; Long-Term Priorities – approve strategy, vision, themes
+⚠ TBC: Fully codified policy file per decision domain is a deliverable from the CM logic tree + data cube work.
+e) Approval Process
+Answer:
+ADEO Approvals follow a clear 6-step flow: (1) Upload to ECAS, (2) Archetype definition, (3) Completeness check, (4) Framework evaluation, (5) Scoring &amp; prioritization, (6) Committee decision.
+Chairman Approvals: Now batched twice daily (morning/evening) vs. previously ad-hoc throughout day. DOA-based workflows for HR/payroll, policy exceptions, operational requests. Strategic decisions via recurring governance forums and direct reviews.
+f) Decision Documentation (MoM, Memo etc)
+Answer:
+Action Tracking Evolution:
+Asana (stopped June 2025)
+Email templates (stopped September 2025 – staff sick leave)
+2do tool (current) – consolidates actions, plan to print before meetings
+Only action items tracked, not full minutes. Chairman has strong memory and notices incomplete commitments immediately.
+⚠ TBC: These are distributed across ECAS, email, shared drives. A unified "decision log" is a stated objective of Agent-0.
+Q2. Can you share list of key use-cases and have these been prioritised?
+Answer:
+Yes. Current PoC focus areas under validation:
+POC A: Business Progress Review – evaluate/challenge progress deliverables, resolve bottlenecks/conflicts
+POC B: Operational Approvals within DOA – pre-screen, highlight risks &amp; trade-offs
+POC C: Setting Mid &amp; Long-Term Priorities – high priority chairman activity
+Additional ambitious POCs recommended from our strategic analysis:
+ADEO Proposal Evaluation Observer – multi-agent scoring assistant
+Meeting Intelligence + Commitment Tracker – addresses action tracking gaps
+HH/ADEO Strategic Prep Engine – for board engagement prep (20% of time)
+Cross-Entity Portfolio Radar – monitors DGE vs other Abu Dhabi entities
+Performance &amp; Feedback Intelligence – for constant year-round feedback
+Status: Agent-0 is at L1 – Concept Definition; ADEO Observer &amp; MRG already have POCs running.
+Q3. Is there mapping of decisions to stakeholders impacted list?
+Answer:
+Partial mapping exists:
+ADEO deck lists all committees and their mandates/decision scope
+Chairman blueprint maps decisions to counterparties – HH, ADEO, ADGEs, external executives, internal teams
+⚠ TBC: No explicit per-decision stakeholder impact register yet; this will be defined in the decision-logic + data cube work.
+Q4. In terms of data readiness, has the data sources been reviewed for readiness?
+Answer:
+Conceptually yes, but not fully executed yet:
+Data readiness is one of three prioritisation axes (Impact, Tech maturity, Data readiness)
+Business-scoping deliverables include "CM AI twin data cube" and data source mapping
+For MRG, ~700+ governing documents already analyzed with gaps identified
+⚠ TBC: For Agent-0 specifically (emails, HR/ERP/CRM, decision docs), data readiness analysis is in progress.
+Q5. Is there a decision register or historical repository for past decisions?
+Answer:
+Multiple repositories exist, but not unified:
+ADEO: proposals archive + scoring outcomes
+Chairman &amp; DGE: Authority/approval ledger, DOFs/DOAs, funding decisions, risk reviews
+Action tracking: historical data in Asana, email templates, now 2do tool
+MRG domain: inspection reports and enforcement records
+Agent-0's vision includes "Consolidating memory &amp; knowledge" – creating the unified decision register is a project objective.
+Q6. What are the requirements and guidelines for security, compliance and ethics? Please share samples.
+Answer:
+AI-Native Blueprint includes:
+AI governance framework (draft exists, in review)
+AI Policy (pending ADEO approval)
+AI Maturity Index (implemented with Gartner baseline)
+AI Command Center to oversee transformation risk and performance
+Agent-0 Core Principles:
+Elevate judgment, not imitate or inherit biases – enhance, not replace:
+Ground every decision in evidence &amp; facts, not assumptions:
+Act within clear guardrails, with human-in-the-loop approval:
+Framework recognizes government leadership (public service, law-bound) differs from corporate leadership.
+⚠ TBC: Detailed AI Policy text and security standards referenced but not included in decks. Samples available from AI Policy document post-ADEO approval.
+
+  SECTION B: Decision Complexity &amp; Integration Scope  
+Q7. How many distinct decision types does the organization currently handle, and how many decision branches typically exist for each major decision type?
+Answer:
+Chairman decisions mapped via CEO Excellence into dozens of distinct activities across 6 pillars. Key activities include:
+Setting mid &amp; long-term priorities, approving strategy/vision/themes
+Business progress review, removing blockers and resolving conflicts
+Operational approvals within DOA, policy exceptions
+Risk management, corrective actions, pre/post mortems
+Executive hiring decisions, performance standards, role rotations
+Decision trees use cognitive layers: Perception (15%), Analysis (60%), Personal Experience (10%), Intuition (15%).
+⚠ TBC: Exact number of decision types and average branch count will come from CM logic-tree deliverable.
+Q8. What percentage of current decisions fall into each of the three authority levels defined in the Agent-0 framework?
+⚠ TBC: No current percentage split documented. Will be produced once role heatmap is populated from logic trees.
+Q9. What is the total number of business systems that require integration (ERP, CRM, document management)?
+Answer:
+Structured Enterprise Systems in scope:
+ERP (Oracle Fusion referenced)
+HRIS and payroll systems
+CRM / licensing / case management systems in sectoral entities
+Data Exchange Platform, Data-in-a-Box, shared platforms
+ECAS (for ADEO submissions)
+2do tool (current action tracking)
+⚠ TBC: Exact system names and integration capabilities (REST vs DB) need confirmation with DGE IT / GovDigital.
+Q10. What is the total number of communication systems that require integration?
+a) Which email systems, messaging platforms, video conferencing tools, and document repositories require integration, and what is the message volume for each channel?
+Answer:
+Communication channels in scope:
+Email: CM mailbox (O365)
+Enterprise messaging: MS Teams
+Meeting recordings/transcripts: board meetings, ADEO, 1:1s, townhalls
+Document repositories: SharePoint, shared drives
+Action tracking: 2do tool
+⚠ TBC: Exact message volumes (emails/day, Teams messages/day, meeting hours/month) need to be measured.
+Q11. What is the total number of external data sources that needs to be integrated?
+a) Which external data providers, news feeds, market intelligence sources, and regulatory databases require integration?
+Answer:
+In scope conceptually:
+For Agent-0/Chairman: External publications, media coverage, economic &amp; sector intel
+For ADEO/MRG/sectoral: Sectoral statistics, demographic data, global/national standards
+⚠ TBC: Exact list of external providers (Bloomberg, local news feeds, regulatory DBs) not yet enumerated.
+Q12. Are there an existing data platform with the data needed for the solution already ingested?
+Answer:
+Yes, data platforms exist, but not all Agent-0 data is ingested yet:
+Data Exchange Platform
+Data-in-a-Box
+Federated data fabric (design &amp; roll-out in progress)
+Agentic Memory Enablement for AI agents
+CM-specific data (emails, calendar, ADEO decision packs) not yet ingested into central analytics store – this is part of the CM AI twin data cube work.
+Q13. What are the synchronization frequency requirements for maintaining data consistency across integrated platforms?
+Answer:
+Vision: "0 latency on key outputs and decisions" and "always-on observation of signals and sentiment".
+Practical expectation:
+Near real-time: emails, meetings, ADEO pipeline, major approvals
+Daily/intra-day batch: HR snapshots, some financials
+⚠ TBC: Exact SLAs per data domain need agreement in architecture workshops.
+Q14. How many organizational policies, procedures, and precedents must be integrated into the decision framework?
+Answer:
+Magnitude hints:
+MRG cross-entity review: ~700+ governance documents (laws, policies, manuals)
+ADAFSA food imports: &gt;20 governing docs per product subcategory
+Agent-0 scope: All applicable laws/decrees, government regulations, DGE governance frameworks, DOFs/DOAs, internal policies (HR, procurement, finance, risk)
+⚠ TBC: Closed list/count not yet available; MRG and Agent-0 will help discover and codify the universe.
+Q15. How many regulatory frameworks and compliance requirements impact decision-making processes?
+Answer:
+Examples documented:
+Sector-specific regulatory regimes in MRG pipeline
+WoG-level cyber and data governance policies
+AI-specific governance framework and policy (being created)
+⚠ TBC: No numeric count, but assume multiple per sector + cross-cutting AI/data/cyber requirements.
+Q16. Are there historical data records for different types of decisions, success rate and how is success measured?
+Answer:
+For AI-Native use cases overall, GovAI tracks: # of live use cases, # with measurable value, impact metrics (hours saved / cost reduction).
+For Agent-0, success metrics defined as: Decision latency, coverage of CM decisions, adoption, and satisfaction.
+⚠ TBC: No single quantified "success rate per decision type" yet; defining such metrics is part of the scoping work.
+
+  SECTION C: Technical Infrastructure Questions  
+Q17. Do the current systems (Fusion, HRIS, CRM) have active, accessible REST APIs today, or will we need to build custom database connectors?
+a) Is the implementation of Fusion the Oracle Cloud SaaS version, or is it hosted on-premise? What modules are in scope?
+Answer:
+Hosted on Prem
+Q18. How many months/years of historical email, decision logs, and documents are immediately available and "cleaned" to train the Persona?
+Answer:
+Scoping plan sets out to collect:
+3 months of CM calendar and emails for blueprinting and analysis
+Past meeting recordings/transcripts, ADEO submissions, DOAs, operational docs
+Available? Yes – dispersed across O365 / shared drives / existing systems.
+Cleaned and centralized? No – scoping phase includes ingestion, mapping and cleaning, particularly for persona training and memory.
+Q19. For the "Ambient Meeting Intelligence," do the physical boardrooms already have high-fidelity microphones connected to a central server?
+Answer:
+⚠ TBC: Hardware details not documented. Assume additional hardware or integration work may be required for "emotional undertones" fidelity unless DGE confirms existing high-quality, centrally-recorded audio.
+Q20. Do you currently use an Integration Middleware or a central Data Lake that Agent-0 can connect to?
+Answer:
+Strong indicators of central data infrastructure from AI-Native:
+Data Exchange Platform
+Data-in-a-Box
+Federated Data Fabric design &amp; roll-out
+Target architecture is NOT pure point-to-point; Agent-0 expected to sit within shared data and AI platform ecosystem.
+⚠ TBC: Exact technologies (specific data lake / middleware platform) need confirmation with GovDigital.
+Q21. For the MVP, does Agent-0 need to technically "execute" the action in the system (write-back), or is it enough to surface a recommendation for a human to click?
+Answer:
+Core principle: "Act within clear guardrails, with a human-in-the-loop."
+For MVP, safest design (consistent with docs):
+Agent-0 surfaces recommendations, pre-screenings, and structured actions
+Human (Chairman or delegate) confirms/triggers final execution
+Only low-risk DOA-based workflows could be candidates for write-back after governance sign-off
+Current artefacts lean towards recommendation + human click, with roadmap to expand to auto-execution in tightly-guardrailed flows.
+Q22. Does a digital "Delegation of Authority" matrix already exist that maps specific decision types to rules/limits?
+Answer:
+Multiple slides reference authority and approval ledger, DOAs, and DOFs as existing artefacts, although:
+May be in static form (documents/ledgers) rather than API-ready
+Has not been converted to "dynamic decision tree" – that is part of Agent-0's design work
+Agent-0 logic trees will be built from these DOA documents + historical approvals.
+Q23. Since we are using local models, what specific GPU infrastructure is currently provisioned and ready for us to use?
+Answer:
+⚠ TBC: GPU infrastructure must be treated as TBC. Need specifics from (existing GPU clusters, cloud tenancy, or whether AWS GPUs are expected as primary hosting).
+Q24. Is the system architecture intended for a single specific pilot executive initially, or must we build a multi-tenant platform from Day 1?
+Answer:
+"Chairman AI Twin" – single highly-personalised CM twin
+Agent-0 as "common capability" – implying eventual multi-executive/multi-entity support
+Build Approach:
+Short term (MVP): Architecture optimised around one pilot executive (CM)
+Medium term: Must be designed as multi-tenant on the same underlying platform
+Q25. For the "Context Engine," is daily batch processing of data acceptable, or do you require strictly real-time streaming for financial and HR updates?
+Answer:
+Vision: "Achieving 0 latency on key outputs &amp; decisions" and "always-on observer" over signals and sentiment.
+Practical reality: No explicit SLA per data domain; legacy constraints acknowledged.
+Data Type
+Frequency Expectation
+
+High-value streams
+Near real-time (emails, meetings, ADEO pipeline, major approvals)
+
+Slower-moving data
+Daily or intra-day batch acceptable (HR snapshots, some financials)
+
+⚠ TBC: Exact frequency requirements are open design decisions to be agreed in architecture workshops.
+
+  SUMMARY: Key Items To Be Confirmed (TBC)  
+The following items require clarification from DGE IT / GovDigital before architecture finalization:
+
+Area
+Information TBC
+
+Systems Integration
+REST API availability for Fusion, HRIS, CRM; exact system names and versions
+
+Oracle Fusion
+SaaS vs on-prem deployment; modules in scope (Finance, Procurement, HCM)
+
+Data Volumes
+Emails/day, Teams messages/day, meeting hours/month, ADEO submissions/month
+
+AV Hardware
+Boardroom microphone quality and central recording capability for ambient intelligence
+
+GPU Infrastructure
+Cloud provider, GPU type (H100/A100/L40), quantity provisioned
+
+Sync Frequency
+SLAs per data domain (real-time vs daily batch)
+
+External Data
+Specific providers (Bloomberg, news feeds, regulatory DBs) and access methods
+
+Data Platform
+Exact middleware / data lake technologies in use
+
+Action Tracking
+Integration capabilities of 2do tool; historical data export from Asana/email
+
+Security Policies
+AI Policy document (post-ADEO approval), WoG cyber governance details
+
