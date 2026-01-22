@@ -33,16 +33,19 @@ const subscribe = (callback: () => void) => {
 };
 
 export function ThemeToggle({ className }: { className?: string }) {
-  const theme = useSyncExternalStore(subscribe, getSnapshot, () => 'light');
+  // Server snapshot must match the pre-hydration script default (dark)
+  const theme = useSyncExternalStore(subscribe, getSnapshot, () => 'dark');
 
   useEffect(() => {
+    // Only update DOM if there's a mismatch (handles initial hydration)
     const root = document.documentElement;
-    if (theme === 'dark') {
+    const isDark = root.classList.contains('dark');
+    
+    if (theme === 'dark' && !isDark) {
       root.classList.add('dark');
-    } else {
+    } else if (theme === 'light' && isDark) {
       root.classList.remove('dark');
     }
-    window.localStorage.setItem(STORAGE_KEY, theme);
   }, [theme]);
 
   const toggleTheme = () => {
