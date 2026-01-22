@@ -22,16 +22,16 @@ export function DecisionRouteCard({
       </CardHeader>
       <CardContent className="space-y-2">
         {steps && steps.length > 0 ? (
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2">
             {steps.map((step) => (
               <div key={step.id} className="flex items-center gap-2">
                 <span
                   className={cn(
-                    'h-2.5 w-2.5 rounded-full border',
+                    'h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full border flex-shrink-0',
                     STATUS_STYLES[step.status]
                   )}
                 />
-                <span className="text-[12px] text-foreground">{step.label}</span>
+                <span className="text-[11px] sm:text-[12px] text-foreground">{step.label}</span>
               </div>
             ))}
           </div>
